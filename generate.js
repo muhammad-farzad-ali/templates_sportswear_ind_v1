@@ -1,6 +1,8 @@
 const fs = require('fs');
 const path = require('path');
 
+const contentJSON = fs.readFileSync(path.join(__dirname, 'data', 'content.json'), 'utf8');
+
 const TEMPLATES = [
   { id:'01', dir:'champion-heritage', name:"Champion's Heritage", colors:{primary:'#0A1628',accent:'#C5993A','accent-light':'#D4AC5A',bg:'#FAF7F2','bg-alt':'#F0EBE3',text:'#3D4F5F'}, fonts:['"Playfair Display"','"Inter"','"JetBrains Mono"'], heroPattern:'diagonal-lines', accentRule:true },
   { id:'02', dir:'dynasty-sport', name:'Dynasty Sport', colors:{primary:'#1B4332',accent:'#B8860B','accent-light':'#D4A017',bg:'#FFFFF0','bg-alt':'#8FBC8F22',text:'#2C2C2C'}, fonts:['"Cormorant Garamond"','"Source Sans 3"','"Inter"'], heroPattern:'diamonds', accentRule:false },
@@ -19,7 +21,7 @@ const TEMPLATES = [
   { id:'15', dir:'heavy-duty', name:'Heavy Duty', colors:{primary:'#000000',accent:'#3D4A2A','accent-light':'#D4C5A9',bg:'#FFFFFF','bg-alt':'#2C3E1F',text:'#000000'}, fonts:['"Teko"','"Roboto"','"Inter"'], heroPattern:'camo', accentRule:false },
   { id:'16', dir:'pure-form', name:'Pure Form', colors:{primary:'#1E3A5F',accent:'#3B82F6','accent-light':'#6B7280',bg:'#F7F8FA','bg-alt':'#FFFFFF',text:'#1E3A5F'}, fonts:['"Plus Jakarta Sans"','"Inter"','"JetBrains Mono"'], heroPattern:'dots', accentRule:false },
   { id:'17', dir:'clarity-sport', name:'Clarity Sport', colors:{primary:'#1C1917',accent:'#0D9488','accent-light':'#78716C',bg:'#FAFAF9','bg-alt':'#CCFBF1',text:'#1C1917'}, fonts:['"Geist"','"Inter"','"JetBrains Mono"'], heroPattern:'teal-accent', accentRule:false },
-  { id:'18', dir:'essential-kit', name:'Essential Kit', colors:{primary:'#111827',accent:'#1F2937','accent-light':'#9CA3AF',bg:'#F3F4F6','bg-alt':'#FFFFFF',text:'#111827'}, fonts:['"Inter"','"Inter"','"JetBrains Mono"'], heroPattern:'minimal', accentRule:false },
+  { id:'18', dir:'essential-kit', name:'Essential Kit', colors:{primary:'#111827',accent:'#6366F1','accent-light':'#9CA3AF',bg:'#F3F4F6','bg-alt':'#FFFFFF',text:'#111827'}, fonts:['"Inter"','"Inter"','"JetBrains Mono"'], heroPattern:'minimal', accentRule:false },
   { id:'19', dir:'precision', name:'Precision', colors:{primary:'#0F172A',accent:'#2563EB','accent-light':'#475569',bg:'#F1F5F9','bg-alt':'#FFFFFF',text:'#0F172A'}, fonts:['"IBM Plex Sans"','"IBM Plex Mono"','"Inter"'], heroPattern:'blueprint', accentRule:false },
   { id:'20', dir:'calm-authority', name:'Calm Authority', colors:{primary:'#1C1917',accent:'#166534','accent-light':'#57534E',bg:'#FEFCE8','bg-alt':'#DCFCE7',text:'#1C1917'}, fonts:['"Lora"','"Work Sans"','"Inter"'], heroPattern:'blobs', accentRule:false },
   { id:'21', dir:'sprint', name:'Sprint', colors:{primary:'#000000',accent:'#FFE500','accent-light':'#404040',bg:'#FFFFFF','bg-alt':'#1A1A1A',text:'#1A1A1A'}, fonts:['"Bebas Neue"','"Inter"','"JetBrains Mono"'], heroPattern:'speed', accentRule:false },
@@ -54,75 +56,25 @@ const TEMPLATES = [
   { id:'50', dir:'made-right', name:'Made Right', colors:{primary:'#1C1917',accent:'#166534','accent-light':'#57534E',bg:'#FEFCE8','bg-alt':'#DCFCE7',text:'#1C1917'}, fonts:['"Bitter"','"Inter"','"JetBrains Mono"'], heroPattern:'leaves', accentRule:false }
 ];
 
-const PRODUCT_ICONS = {
-  'football-kits': `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2"><circle cx="32" cy="32" r="28"/><path d="M32 4l8 16h16l-12 10 4 16-16-8-16 8 4-16L8 20h16z"/></svg>`,
-  'cricket-wear': `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2"><rect x="28" y="8" width="8" height="40" rx="2"/><ellipse cx="32" cy="54" rx="10" ry="6"/></svg>`,
-  'boxing-gear': `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 20c0-8 8-16 16-16s16 8 16 16v8c0 4-4 8-8 8H24c-4 0-8-4-8-8v-8z"/><path d="M20 36v12c0 4 4 8 8 8h8c4 0 8-4 8-8V36"/></svg>`,
-  'mma-fightwear': `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2"><circle cx="32" cy="20" r="12"/><path d="M20 32l-8 20h8l4-12 4 12h8l-8-20"/></svg>`,
-  'running-apparel': `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2"><circle cx="36" cy="12" r="6"/><path d="M24 24l8 4 8-8 8 12-16 8-8-4-8 12"/></svg>`,
-  'gym-fitness': `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2"><rect x="8" y="24" width="8" height="16" rx="2"/><rect x="48" y="24" width="8" height="16" rx="2"/><rect x="16" y="28" width="32" height="8" rx="1"/><rect x="4" y="28" width="4" height="8" rx="1"/><rect x="56" y="28" width="4" height="8" rx="1"/></svg>`,
-  'basketball-uniforms': `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2"><circle cx="32" cy="32" r="28"/><path d="M4 32h56M32 4c-8 8-8 20 0 28s8 20 0 28"/><path d="M8 16c10 8 10 24 0 32M56 16c-10 8-10 24 0 32"/></svg>`,
-  'martial-arts': `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 12h24v8l-4 8 4 8v8H20v-8l4-8-4-8z"/><path d="M16 28h-8M56 28h-8"/></svg>`,
-  'sports-accessories': `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2"><rect x="12" y="16" width="40" height="32" rx="4"/><path d="M12 24h40M24 16v-4M40 16v-4"/></svg>`,
-  'compression-wear': `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2"><path d="M24 8h16v48H24z"/><path d="M20 16h24M20 24h24M20 32h24M20 40h24"/></svg>`
-};
-
 function generateHeroPattern(type, colors) {
   const p = colors.primary, a = colors.accent, bg = colors.bg;
-  const patterns = {
-    'diagonal-lines': `background:repeating-linear-gradient(45deg,${p},${p} 10px,${a}15 10px,${a}15 20px)`,
-    'diamonds': `background:${p};background-image:radial-gradient(${a}22 1px,transparent 1px);background-size:20px 20px`,
-    'stripes': `background:repeating-linear-gradient(0deg,${p},${p} 40px,${a} 40px,${a} 42px)`,
-    'crosshatch': `background:${p};background-image:repeating-linear-gradient(45deg,transparent,transparent 10px,${a}11 10px,${a}11 11px),repeating-linear-gradient(-45deg,transparent,transparent 10px,${a}11 10px,${a}11 11px)`,
-    'waves': `background:${p};background-image:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 30 Q15 20 30 30 T60 30' fill='none' stroke='${encodeURIComponent(a)}' stroke-width='0.5' opacity='0.2'/%3E%3C/svg%3E")`,
-    'circuit': `background:${p};background-image:linear-gradient(${a}08 1px,transparent 1px),linear-gradient(90deg,${a}08 1px,transparent 1px);background-size:30px 30px`,
-    'airflow': `background:linear-gradient(135deg,${p} 0%,${a}22 100%)`,
-    'carbon': `background:${p};background-image:url("data:image/svg+xml,%3Csvg width='6' height='6' viewBox='0 0 6 6' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='6' height='6' fill='${encodeURIComponent(a)}' fill-opacity='0.05'/%3E%3Crect x='1' y='1' width='4' height='4' fill='${encodeURIComponent(p)}'/%3E%3C/svg%3E")`,
-    'diagonal': `background:${bg};background-image:repeating-linear-gradient(-45deg,${p},${p} 2px,transparent 2px,transparent 20px)`,
-    'speedlines': `background:${p};background-image:repeating-linear-gradient(0deg,${a}08,${a}08 2px,transparent 2px,transparent 8px)`,
-    'hazard': `background:${bg};background-image:repeating-linear-gradient(-45deg,${a},${a} 10px,${p} 10px,${p} 20px)`,
-    'rivets': `background:${p};background-image:radial-gradient(${a}33 2px,transparent 2px);background-size:24px 24px`,
-    'grid': `background:${p};background-image:linear-gradient(${a}15 1px,transparent 1px),linear-gradient(90deg,${a}15 1px,transparent 1px);background-size:40px 40px`,
-    'power': `background:${p};background-image:linear-gradient(0deg,${a}15,${a}15 2px,transparent 2px);background-size:100% 20px`,
-    'camo': `background:${p};background-image:url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cellipse cx='10' cy='10' rx='8' ry='4' fill='${encodeURIComponent(a)}' fill-opacity='0.15' transform='rotate(30 10 10)'/%3E%3C/svg%3E")`,
-    'dots': `background:${bg};background-image:radial-gradient(${a}15 1px,transparent 1px);background-size:20px 20px`,
-    'teal-accent': `background:${bg};background-image:linear-gradient(135deg,${a}08 0%,transparent 50%)`,
-    'minimal': `background:${bg}`,
-    'blueprint': `background:${bg};background-image:linear-gradient(${a}10 1px,transparent 1px),linear-gradient(90deg,${a}10 1px,transparent 1px),linear-gradient(${a}05 1px,transparent 1px),linear-gradient(90deg,${a}05 1px,transparent 1px);background-size:100px 100px,100px 100px,20px 20px,20px 20px`,
-    'blobs': `background:${bg};background-image:radial-gradient(ellipse at 20% 50%,${a}33 0%,transparent 50%),radial-gradient(ellipse at 80% 20%,${p}22 0%,transparent 40%)`,
-    'speed': `background:${p};background-image:repeating-linear-gradient(-45deg,${a},${a} 1px,transparent 1px,transparent 15px)`,
-    'team': `background:${p};background-image:repeating-linear-gradient(90deg,${a}15,${a}15 4px,transparent 4px,transparent 40px)`,
-    'progress': `background:${p};background-image:linear-gradient(90deg,${a}44 0%,${a}44 66%,${bg}22 66%)`,
-    'mountain': `background:${p};background-image:url("data:image/svg+xml,%3Csvg width='400' height='200' viewBox='0 0 400 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 200 L100 60 L150 120 L200 40 L250 100 L300 20 L400 200Z' fill='${encodeURIComponent(a)}' fill-opacity='0.15'/%3E%3C/svg%3E")`,
-    'goldline': `background:${p};background-image:linear-gradient(0deg,${a}22,${a}22 1px,transparent 1px);background-size:100% 60px`,
-    'globe': `background:${p};background-image:radial-gradient(circle at 50% 50%,${bg}33 0%,transparent 60%)`,
-    'certs': `background:${p};background-image:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='30' cy='30' r='20' fill='none' stroke='${encodeURIComponent(a)}' stroke-width='0.5' opacity='0.2'/%3E%3C/svg%3E")`,
-    'container': `background:${p};background-image:repeating-linear-gradient(90deg,${a}22,${a}22 8px,${p} 8px,${p} 16px)`,
-    'timezone': `background:${p};background-image:linear-gradient(90deg,${a}15 1px,transparent 1px);background-size:25% 100%`,
-    'calculator': `background:${p};background-image:linear-gradient(135deg,${a}11 25%,transparent 25%),linear-gradient(-135deg,${a}11 25%,transparent 25%);background-size:40px 40px`,
-    'glow': `background:${p};box-shadow:inset 0 0 200px ${a}15`,
-    'blobs-pink': `background:${bg};background-image:radial-gradient(ellipse at 30% 70%,${a}22 0%,transparent 50%),radial-gradient(ellipse at 70% 30%,${a}33 0%,transparent 40%)`,
-    'amber-bars': `background:${p};background-image:repeating-linear-gradient(90deg,${a}11,${a}11 3px,transparent 3px,transparent 30px)`,
-    'mesh': `background:linear-gradient(135deg,${p} 0%,${a}33 50%,${p} 100%)`,
-    'lab-dots': `background:${bg};background-image:radial-gradient(${a}12 1px,transparent 1px);background-size:24px 24px`,
-    'newspaper': `background:${bg};background-image:repeating-linear-gradient(0deg,${a}22,${a}22 1px,transparent 1px,transparent 28px)`,
-    'magazine': `background:${bg};background-image:linear-gradient(90deg,${a}15 1px,transparent 1px);background-size:33.33% 100%`,
-    'scorecard': `background:${bg};background-image:linear-gradient(0deg,${a}11 1px,transparent 1px);background-size:100% 40px`,
-    'filmstrip': `background:${bg};background-image:repeating-linear-gradient(90deg,${a}22,${a}22 3px,transparent 3px,transparent 30px)`,
-    'ticker': `background:${p};background-image:repeating-linear-gradient(0deg,${a}15,${a}15 1px,transparent 1px,transparent 3px)`,
-    'floodlight': `background:${p};background-image:radial-gradient(ellipse at 50% 0%,${a}33 0%,transparent 60%)`,
-    'spotlight': `background:${p};background-image:radial-gradient(ellipse at 50% 30%,${a}22 0%,transparent 50%)`,
-    'gold-border': `background:${p};background-image:linear-gradient(${a}22,${a}22);background-size:100% 2px;background-position:0 0;background-repeat:no-repeat`,
-    'field': `background:${p};background-image:linear-gradient(0deg,${a}11 1px,transparent 1px),linear-gradient(90deg,${a}11 1px,transparent 1px);background-size:60px 60px`,
-    'geometry': `background:${p};background-image:linear-gradient(45deg,${a}08 25%,transparent 25%),linear-gradient(-45deg,${a}08 25%,transparent 25%);background-size:40px 40px`,
-    'waves-brown': `background:${p};background-image:url("data:image/svg+xml,%3Csvg width='80' height='20' viewBox='0 0 80 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 10 Q20 0 40 10 T80 10' fill='none' stroke='${encodeURIComponent(a)}' stroke-width='0.5' opacity='0.2'/%3E%3C/svg%3E")`,
-    'stitch': `background:${bg};background-image:url("data:image/svg+xml,%3Csvg width='12' height='12' viewBox='0 0 12 12' xmlns='http://www.w3.org/2000/svg'%3E%3Cline x1='0' y1='6' x2='4' y2='6' stroke='${encodeURIComponent(a)}' stroke-width='1' opacity='0.15'/%3E%3C/svg%3E")`,
-    'weave': `background:${bg};background-image:repeating-linear-gradient(45deg,${a}08,${a}08 2px,transparent 2px,transparent 8px),repeating-linear-gradient(-45deg,${a}08,${a}08 2px,transparent 2px,transparent 8px)`,
-    'diagonal-cut': `background:${bg};background-image:linear-gradient(135deg,${a}11 50%,transparent 50%)`,
-    'leaves': `background:${bg};background-image:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 10 Q40 20 30 30 Q20 20 30 10Z' fill='${encodeURIComponent(a)}' fill-opacity='0.08'/%3E%3C/svg%3E")`
-  };
-  return patterns[type] || patterns['dots'];
+  const isDark = parseInt(p.slice(1),16) < 0x808080;
+  return `background:${isDark ? p : bg}`;
 }
+
+const PRODUCT_ICONS = {
+  'football-kits': '<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2"><circle cx="32" cy="32" r="28"/><path d="M32 4l8 16h16l-12 10 4 16-16-8-16 8 4-16L8 20h16z"/></svg>',
+  'cricket-wear': '<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2"><rect x="28" y="8" width="8" height="40" rx="2"/><ellipse cx="32" cy="54" rx="10" ry="6"/></svg>',
+  'boxing-gear': '<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 20c0-8 8-16 16-16s16 8 16 16v8c0 4-4 8-8 8H24c-4 0-8-4-8-8v-8z"/><path d="M20 36v12c0 4 4 8 8 8h8c4 0 8-4 8-8V36"/></svg>',
+  'mma-fightwear': '<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2"><circle cx="32" cy="20" r="12"/><path d="M20 32l-8 20h8l4-12 4 12h8l-8-20"/></svg>',
+  'running-apparel': '<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2"><circle cx="36" cy="12" r="6"/><path d="M24 24l8 4 8-8 8 12-16 8-8-4-8 12"/></svg>',
+  'gym-fitness': '<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2"><rect x="8" y="24" width="8" height="16" rx="2"/><rect x="48" y="24" width="8" height="16" rx="2"/><rect x="16" y="28" width="32" height="8" rx="1"/><rect x="4" y="28" width="4" height="8" rx="1"/><rect x="56" y="28" width="4" height="8" rx="1"/></svg>',
+  'basketball-uniforms': '<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2"><circle cx="32" cy="32" r="28"/><path d="M4 32h56M32 4c-8 8-8 20 0 28s8 20 0 28"/><path d="M8 16c10 8 10 24 0 32M56 16c-10 8-10 24 0 32"/></svg>',
+  'martial-arts': '<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 12h24v8l-4 8 4 8v8H20v-8l4-8-4-8z"/><path d="M16 28h-8M56 28h-8"/></svg>',
+  'sports-accessories': '<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2"><rect x="12" y="16" width="40" height="32" rx="4"/><path d="M12 24h40M24 16v-4M40 16v-4"/></svg>',
+  'compression-wear': '<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2"><path d="M24 8h16v48H24z"/><path d="M20 16h24M20 24h24M20 32h24M20 40h24"/></svg>'
+};
+const PRODUCT_ICONS_JSON = JSON.stringify(PRODUCT_ICONS);
 
 function generateHTML(t) {
   const c = t.colors;
@@ -329,7 +281,7 @@ tailwind.config={theme:{extend:{colors:{p:'${primary}','p-light':'${accent}','bg
 <input type="email" placeholder="Email Address" class="w-full px-4 py-3 rounded text-sm border focus:outline-none" style="background:${primary}55;border-color:${accent}44;color:${heroText}" required>
 <input type="text" placeholder="Company Name" class="w-full px-4 py-3 rounded text-sm border focus:outline-none" style="background:${primary}55;border-color:${accent}44;color:${heroText}">
 <input type="text" placeholder="Country" class="w-full px-4 py-3 rounded text-sm border focus:outline-none" style="background:${primary}55;border-color:${accent}44;color:${heroText}">
-<select class="w-full px-4 py-3 rounded text-sm border focus:outline-none" style="background:${primary}55;border-color:${accent}44;color:${heroText}88">
+<select class="w-full px-4 py-3 rounded text-sm border focus:outline-none" style="background:${primary}55;border-color:${accent}44;color:${heroText}">
 <option value="">Select Product Category</option>
 <option>Football Kits</option><option>Cricket Apparel</option><option>Boxing Equipment</option>
 <option>MMA & Fightwear</option><option>Running Apparel</option><option>Gym & Fitness Wear</option>
@@ -347,19 +299,20 @@ tailwind.config={theme:{extend:{colors:{p:'${primary}','p-light':'${accent}','bg
 <footer class="py-12" style="background:${primary}">
 <div class="max-w-7xl mx-auto px-6">
 <div class="grid md:grid-cols-5 gap-8 mb-8">
-<div class="md:col-span-2"><p class="font-display text-xl font-bold mb-3" style="color:${heroText}">APEX SPORT</p><p class="text-sm opacity-50 leading-relaxed mb-4" style="color:${heroText}">Premium sportswear manufacturer from Sialkot, Pakistan. Serving global brands since <span id="f-yr"></span>. OEM/ODM with low MOQ and fast turnaround.</p><div class="flex gap-3" id="f-social"></div></div>
+<div class="md:col-span-2"><p class="font-display text-xl font-bold mb-3" style="color:${heroText}">APEX SPORT</p><p class="text-sm opacity-70 leading-relaxed mb-4" style="color:${heroText}">Premium sportswear manufacturer from Sialkot, Pakistan. Serving global brands since <span id="f-yr"></span>. OEM/ODM with low MOQ and fast turnaround.</p><div class="flex gap-3" id="f-social"></div></div>
 <div><h4 class="font-semibold text-sm uppercase tracking-wide mb-4" style="color:${accent}">Products</h4><ul class="space-y-2 text-sm opacity-50" style="color:${heroText}" id="f-prods"></ul></div>
 <div><h4 class="font-semibold text-sm uppercase tracking-wide mb-4" style="color:${accent}">Company</h4><ul class="space-y-2 text-sm opacity-50" style="color:${heroText}"><li><a href="#about" class="hover:opacity-100 transition-opacity">About Us</a></li><li><a href="#materials" class="hover:opacity-100 transition-opacity">Materials</a></li><li><a href="#process" class="hover:opacity-100 transition-opacity">Process</a></li><li><a href="#certs" class="hover:opacity-100 transition-opacity">Certifications</a></li><li><a href="#export" class="hover:opacity-100 transition-opacity">Export Markets</a></li></ul></div>
 <div><h4 class="font-semibold text-sm uppercase tracking-wide mb-4" style="color:${accent}">Contact</h4><ul class="space-y-2 text-sm opacity-50" style="color:${heroText}" id="f-contact"></ul></div>
 </div>
 <div class="pt-6 flex flex-col md:flex-row justify-between items-center gap-4" style="border-top:1px solid ${accent}22">
-<p class="text-xs opacity-40" style="color:${heroText}">&copy; <span id="f-copy"></span> Apex Sportswear Industries. All rights reserved.</p>
-<p class="text-xs opacity-30" style="color:${heroText}">OEM Sportswear Manufacturer · Sialkot, Pakistan · Export Worldwide</p>
+<p class="text-xs opacity-60" style="color:${heroText}">&copy; <span id="f-copy"></span> Apex Sportswear Industries. All rights reserved.</p>
+<p class="text-xs opacity-50" style="color:${heroText}">OEM Sportswear Manufacturer · Sialkot, Pakistan · Export Worldwide</p>
 </div>
 </div>
 </footer>
 
 <script>
+const PRODUCT_ICONS = ${PRODUCT_ICONS_JSON};
 const PROCESS_STEPS = [
   {name:'Fabric Sourcing',desc:'Premium fabrics sourced from certified mills worldwide',icon:'M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4'},
   {name:'Pattern & Cutting',desc:'Precision CAD patterns with automated Gerber cutting',icon:'M14.121 14.121L19 19m-7-7l7-7m-7 7l-2.879 2.879M12 12L4.939 4.939m7.061 7.061l-2.879-2.879M12 12l2.879-2.879'},
@@ -369,8 +322,8 @@ const PROCESS_STEPS = [
   {name:'Packaging & Export',desc:'Custom packaging with full export documentation',icon:'M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4'}
 ];
 
-fetch('../../data/content.json').then(r=>r.json()).then(d=>{
-  const c=d.company,cap=d.capabilities,exp=d.exportInfo;
+const d = ${contentJSON};
+const c=d.company,cap=d.capabilities,exp=d.exportInfo;
   const heroColor='${heroText}';
   const accent='${accent}';
   const primary='${primary}';
@@ -411,15 +364,15 @@ fetch('../../data/content.json').then(r=>r.json()).then(d=>{
 
   document.querySelector('#why-grid').innerHTML=d.whyChooseUs.map(w=>'<div class="p-5 rounded" style="background:'+lightBg+'"><h3 class="font-display text-lg font-bold mb-2" style="color:'+accent+'">'+w.title+'</h3><p class="text-sm opacity-70">'+w.description+'</p></div>').join('');
 
-  document.querySelector('#certs-grid').innerHTML=d.certifications.map(x=>'<div class="p-5 rounded text-center" style="background:'+lightBg+'"><span class="text-3xl block mb-2">'+x.icon+'</span><h4 class="font-semibold text-sm mb-1">'+x.name+'</h4><p class="text-xs opacity-50 mb-2">'+x.description+'</p><p class="text-xs italic" style="color:'+accent+'">'+x.benefit+'</p></div>').join('');
+  document.querySelector('#certs-grid').innerHTML=d.certifications.map(x=>'<div class="p-5 rounded text-center" style="background:'+lightBg+';border:1px solid '+accent+'15"><span class="text-3xl block mb-2">'+x.icon+'</span><h4 class="font-semibold text-sm mb-1">'+x.name+'</h4><p class="text-xs opacity-50 mb-2">'+x.description+'</p><p class="text-xs italic" style="color:'+accent+'">'+x.benefit+'</p></div>').join('');
 
-  document.querySelector('#export-grid').innerHTML='<div><h3 class="font-display text-xl font-bold mb-4">Countries We Serve</h3><div class="flex flex-wrap gap-2 mb-8">'+exp.countries.map(c=>'<span class="text-sm px-3 py-1.5 rounded" style="background:'+accent+'11">'+c+'</span>').join('')+'</div><h3 class="font-display text-xl font-bold mb-4">Industries</h3><div class="flex flex-wrap gap-2">'+d.industriesServed.map(i=>'<span class="text-sm px-3 py-1.5 rounded" style="background:'+primary+';color:'+heroText+'">'+i+'</span>').join('')+'</div></div><div><h3 class="font-display text-xl font-bold mb-4">Trade Terms</h3><div class="space-y-3"><div class="p-4 rounded" style="background:'+lightBg+'"><span class="font-mono text-xs uppercase tracking-wide block mb-1" style="color:'+accent+'">Shipping</span><span class="text-sm">'+exp.shippingTerms.join(' · ')+'</span></div><div class="p-4 rounded" style="background:'+lightBg+'"><span class="font-mono text-xs uppercase tracking-wide block mb-1" style="color:'+accent+'">Payment</span><span class="text-sm">'+exp.paymentTerms.join(' · ')+'</span></div><div class="p-4 rounded" style="background:'+lightBg+'"><span class="font-mono text-xs uppercase tracking-wide block mb-1" style="color:'+accent+'">Special Conditions</span><span class="text-sm">'+exp.specialConditions.join(' · ')+'</span></div></div></div>';
+  document.querySelector('#export-grid').innerHTML='<div><h3 class="font-display text-xl font-bold mb-4">Countries We Serve</h3><div class="flex flex-wrap gap-2 mb-8">'+exp.countries.map(c=>'<span class="text-sm px-3 py-1.5 rounded" style="background:'+accent+'11">'+c+'</span>').join('')+'</div><h3 class="font-display text-xl font-bold mb-4">Industries</h3><div class="flex flex-wrap gap-2">'+d.industriesServed.map(i=>'<span class="text-sm px-3 py-1.5 rounded" style="background:'+primary+';color:'+heroColor+'">'+i+'</span>').join('')+'</div></div><div><h3 class="font-display text-xl font-bold mb-4">Trade Terms</h3><div class="space-y-3"><div class="p-4 rounded" style="background:'+lightBg+'"><span class="font-mono text-xs uppercase tracking-wide block mb-1" style="color:'+accent+'">Shipping</span><span class="text-sm">'+exp.shippingTerms.join(' · ')+'</span></div><div class="p-4 rounded" style="background:'+lightBg+'"><span class="font-mono text-xs uppercase tracking-wide block mb-1" style="color:'+accent+'">Payment</span><span class="text-sm">'+exp.paymentTerms.join(' · ')+'</span></div><div class="p-4 rounded" style="background:'+lightBg+'"><span class="font-mono text-xs uppercase tracking-wide block mb-1" style="color:'+accent+'">Special Conditions</span><span class="text-sm">'+exp.specialConditions.join(' · ')+'</span></div></div></div>';
 
-  document.querySelector('#industries').innerHTML=d.industriesServed.map(i=>'<span class="text-sm px-4 py-2 rounded font-medium" style="background:'+primary+';color:'+heroText+'">'+i+'</span>').join('');
+  document.querySelector('#industries').innerHTML=d.industriesServed.map(i=>'<span class="text-sm px-4 py-2 rounded font-medium" style="background:'+primary+';color:'+heroColor+'">'+i+'</span>').join('');
 
   document.querySelector('#testis').innerHTML=d.testimonials.map(t=>'<div class="p-6 rounded" style="background:'+lightBg+'"><p class="text-sm leading-relaxed mb-4 italic opacity-80">"'+t.quote+'"</p><div class="flex items-center gap-3"><div class="w-10 h-10 rounded-full flex items-center justify-center font-bold text-xs" style="background:'+accent+'22;color:'+accent+'">'+t.author.split(' ').map(n=>n[0]).join('')+'</div><div><span class="text-sm font-semibold block">'+t.author+'</span><span class="text-xs" style="color:'+accent+'">'+t.company+' — '+t.country+'</span></div></div></div>').join('');
 
-  document.querySelector('#faq-grid').innerHTML=d.faq.map(f=>'<div class="p-5 rounded" style="background:'+lightBg+'"><h3 class="font-display text-base font-bold mb-2">'+f.question+'</h3><p class="text-sm opacity-70">'+f.answer+'</p></div>').join('');
+  document.querySelector('#faq-grid').innerHTML=d.faq.map(f=>'<div class="p-5 rounded" style="background:'+lightBg+';border:1px solid '+accent+'15"><h3 class="font-display text-base font-bold mb-2">'+f.question+'</h3><p class="text-sm opacity-70">'+f.answer+'</p></div>').join('');
 
   document.querySelector('#c-info').innerHTML='<div class="flex items-start gap-3"><span style="color:'+accent+'">📍</span><span class="text-sm">'+d.contact.address+'</span></div><div class="flex items-start gap-3"><span style="color:'+accent+'">📞</span><span class="text-sm">'+d.contact.phone+'</span></div><div class="flex items-start gap-3"><span style="color:'+accent+'">💬</span><span class="text-sm">'+d.contact.whatsapp+'</span></div><div class="flex items-start gap-3"><span style="color:'+accent+'">✉️</span><span class="text-sm">'+d.contact.email+'</span></div><div class="flex items-start gap-3"><span style="color:'+accent+'">🌐</span><span class="text-sm">'+d.contact.website+'</span></div>';
   document.querySelector('#c-response').innerHTML='<p class="text-sm"><strong style="color:'+accent+'">⏰ Working Hours:</strong> '+d.contact.workingHours+'</p><p class="text-sm mt-2"><strong style="color:'+accent+'">⚡ Response Time:</strong> '+d.contact.responseTime+'</p>';
@@ -428,8 +381,8 @@ fetch('../../data/content.json').then(r=>r.json()).then(d=>{
   document.querySelector('#f-prods').innerHTML=d.products.slice(0,6).map(p=>'<li><a href="#products" class="hover:opacity-100 transition-opacity">'+p.name+'</a></li>').join('');
   document.querySelector('#f-contact').innerHTML='<li>'+d.contact.address+'</li><li>'+d.contact.phone+'</li><li>'+d.contact.email+'</li><li>'+d.contact.website+'</li>';
   document.querySelector('#f-copy').textContent=new Date().getFullYear();
-  document.querySelector('#f-social').innerHTML=Object.entries(d.contact.social).map(([k,v])=>'<a href="https://'+v+'" target="_blank" class="text-xs uppercase tracking-wide opacity-40 hover:opacity-100 transition-opacity" style="color:'+heroText+'">'+k+'</a>').join('')+'<span class="text-xs opacity-30" style="color:'+heroText+'">Sialkot, Pakistan</span>';
-});
+  document.querySelector('#f-social').innerHTML=Object.entries(d.contact.social).map(([k,v])=>'<a href="https://'+v+'" target="_blank" class="text-xs uppercase tracking-wide opacity-60 hover:opacity-100 transition-opacity" style="color:'+heroColor+'">'+k+'</a>').join('')+'<span class="text-xs opacity-50" style="color:'+heroColor+'">Sialkot, Pakistan</span>';
+
 document.querySelector('#mob-btn').addEventListener('click',()=>document.querySelector('#mob-menu').classList.toggle('hidden'));
 document.querySelectorAll('a[href^="#"]').forEach(a=>a.addEventListener('click',e=>{e.preventDefault();const t=document.querySelector(a.getAttribute('href'));if(t){t.scrollIntoView({behavior:'smooth'});document.querySelector('#mob-menu').classList.add('hidden');}}));
 </script>

@@ -10,7 +10,7 @@ tailwind.config={theme:{extend:{colors:{p:'#2C3E50','p-light':'#0047AB','bg':'#E
 </script>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-.hero-bg{background:#2C3E50;background-image:radial-gradient(circle at 50% 50%,#E6F0FF33 0%,transparent 60%)}
+.hero-bg{background:#2C3E50}
 @keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
 .anim{animation:fadeUp .5s ease-out forwards}.anim-d1{animation-delay:.1s;opacity:0}.anim-d2{animation-delay:.2s;opacity:0}
 @media(prefers-reduced-motion:reduce){.anim,.anim-d1,.anim-d2{animation:none;opacity:1;transform:none}}
@@ -193,7 +193,7 @@ tailwind.config={theme:{extend:{colors:{p:'#2C3E50','p-light':'#0047AB','bg':'#E
 <input type="email" placeholder="Email Address" class="w-full px-4 py-3 rounded text-sm border focus:outline-none" style="background:#2C3E5055;border-color:#0047AB44;color:#FFFFFF" required>
 <input type="text" placeholder="Company Name" class="w-full px-4 py-3 rounded text-sm border focus:outline-none" style="background:#2C3E5055;border-color:#0047AB44;color:#FFFFFF">
 <input type="text" placeholder="Country" class="w-full px-4 py-3 rounded text-sm border focus:outline-none" style="background:#2C3E5055;border-color:#0047AB44;color:#FFFFFF">
-<select class="w-full px-4 py-3 rounded text-sm border focus:outline-none" style="background:#2C3E5055;border-color:#0047AB44;color:#FFFFFF88">
+<select class="w-full px-4 py-3 rounded text-sm border focus:outline-none" style="background:#2C3E5055;border-color:#0047AB44;color:#FFFFFF">
 <option value="">Select Product Category</option>
 <option>Football Kits</option><option>Cricket Apparel</option><option>Boxing Equipment</option>
 <option>MMA & Fightwear</option><option>Running Apparel</option><option>Gym & Fitness Wear</option>
@@ -211,19 +211,20 @@ tailwind.config={theme:{extend:{colors:{p:'#2C3E50','p-light':'#0047AB','bg':'#E
 <footer class="py-12" style="background:#2C3E50">
 <div class="max-w-7xl mx-auto px-6">
 <div class="grid md:grid-cols-5 gap-8 mb-8">
-<div class="md:col-span-2"><p class="font-display text-xl font-bold mb-3" style="color:#FFFFFF">APEX SPORT</p><p class="text-sm opacity-50 leading-relaxed mb-4" style="color:#FFFFFF">Premium sportswear manufacturer from Sialkot, Pakistan. Serving global brands since <span id="f-yr"></span>. OEM/ODM with low MOQ and fast turnaround.</p><div class="flex gap-3" id="f-social"></div></div>
+<div class="md:col-span-2"><p class="font-display text-xl font-bold mb-3" style="color:#FFFFFF">APEX SPORT</p><p class="text-sm opacity-70 leading-relaxed mb-4" style="color:#FFFFFF">Premium sportswear manufacturer from Sialkot, Pakistan. Serving global brands since <span id="f-yr"></span>. OEM/ODM with low MOQ and fast turnaround.</p><div class="flex gap-3" id="f-social"></div></div>
 <div><h4 class="font-semibold text-sm uppercase tracking-wide mb-4" style="color:#0047AB">Products</h4><ul class="space-y-2 text-sm opacity-50" style="color:#FFFFFF" id="f-prods"></ul></div>
 <div><h4 class="font-semibold text-sm uppercase tracking-wide mb-4" style="color:#0047AB">Company</h4><ul class="space-y-2 text-sm opacity-50" style="color:#FFFFFF"><li><a href="#about" class="hover:opacity-100 transition-opacity">About Us</a></li><li><a href="#materials" class="hover:opacity-100 transition-opacity">Materials</a></li><li><a href="#process" class="hover:opacity-100 transition-opacity">Process</a></li><li><a href="#certs" class="hover:opacity-100 transition-opacity">Certifications</a></li><li><a href="#export" class="hover:opacity-100 transition-opacity">Export Markets</a></li></ul></div>
 <div><h4 class="font-semibold text-sm uppercase tracking-wide mb-4" style="color:#0047AB">Contact</h4><ul class="space-y-2 text-sm opacity-50" style="color:#FFFFFF" id="f-contact"></ul></div>
 </div>
 <div class="pt-6 flex flex-col md:flex-row justify-between items-center gap-4" style="border-top:1px solid #0047AB22">
-<p class="text-xs opacity-40" style="color:#FFFFFF">&copy; <span id="f-copy"></span> Apex Sportswear Industries. All rights reserved.</p>
-<p class="text-xs opacity-30" style="color:#FFFFFF">OEM Sportswear Manufacturer · Sialkot, Pakistan · Export Worldwide</p>
+<p class="text-xs opacity-60" style="color:#FFFFFF">&copy; <span id="f-copy"></span> Apex Sportswear Industries. All rights reserved.</p>
+<p class="text-xs opacity-50" style="color:#FFFFFF">OEM Sportswear Manufacturer · Sialkot, Pakistan · Export Worldwide</p>
 </div>
 </div>
 </footer>
 
 <script>
+const PRODUCT_ICONS = {"football-kits":"<svg viewBox=\"0 0 64 64\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><circle cx=\"32\" cy=\"32\" r=\"28\"/><path d=\"M32 4l8 16h16l-12 10 4 16-16-8-16 8 4-16L8 20h16z\"/></svg>","cricket-wear":"<svg viewBox=\"0 0 64 64\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><rect x=\"28\" y=\"8\" width=\"8\" height=\"40\" rx=\"2\"/><ellipse cx=\"32\" cy=\"54\" rx=\"10\" ry=\"6\"/></svg>","boxing-gear":"<svg viewBox=\"0 0 64 64\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><path d=\"M16 20c0-8 8-16 16-16s16 8 16 16v8c0 4-4 8-8 8H24c-4 0-8-4-8-8v-8z\"/><path d=\"M20 36v12c0 4 4 8 8 8h8c4 0 8-4 8-8V36\"/></svg>","mma-fightwear":"<svg viewBox=\"0 0 64 64\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><circle cx=\"32\" cy=\"20\" r=\"12\"/><path d=\"M20 32l-8 20h8l4-12 4 12h8l-8-20\"/></svg>","running-apparel":"<svg viewBox=\"0 0 64 64\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><circle cx=\"36\" cy=\"12\" r=\"6\"/><path d=\"M24 24l8 4 8-8 8 12-16 8-8-4-8 12\"/></svg>","gym-fitness":"<svg viewBox=\"0 0 64 64\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><rect x=\"8\" y=\"24\" width=\"8\" height=\"16\" rx=\"2\"/><rect x=\"48\" y=\"24\" width=\"8\" height=\"16\" rx=\"2\"/><rect x=\"16\" y=\"28\" width=\"32\" height=\"8\" rx=\"1\"/><rect x=\"4\" y=\"28\" width=\"4\" height=\"8\" rx=\"1\"/><rect x=\"56\" y=\"28\" width=\"4\" height=\"8\" rx=\"1\"/></svg>","basketball-uniforms":"<svg viewBox=\"0 0 64 64\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><circle cx=\"32\" cy=\"32\" r=\"28\"/><path d=\"M4 32h56M32 4c-8 8-8 20 0 28s8 20 0 28\"/><path d=\"M8 16c10 8 10 24 0 32M56 16c-10 8-10 24 0 32\"/></svg>","martial-arts":"<svg viewBox=\"0 0 64 64\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><path d=\"M20 12h24v8l-4 8 4 8v8H20v-8l4-8-4-8z\"/><path d=\"M16 28h-8M56 28h-8\"/></svg>","sports-accessories":"<svg viewBox=\"0 0 64 64\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><rect x=\"12\" y=\"16\" width=\"40\" height=\"32\" rx=\"4\"/><path d=\"M12 24h40M24 16v-4M40 16v-4\"/></svg>","compression-wear":"<svg viewBox=\"0 0 64 64\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><path d=\"M24 8h16v48H24z\"/><path d=\"M20 16h24M20 24h24M20 32h24M20 40h24\"/></svg>"};
 const PROCESS_STEPS = [
   {name:'Fabric Sourcing',desc:'Premium fabrics sourced from certified mills worldwide',icon:'M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4'},
   {name:'Pattern & Cutting',desc:'Precision CAD patterns with automated Gerber cutting',icon:'M14.121 14.121L19 19m-7-7l7-7m-7 7l-2.879 2.879M12 12L4.939 4.939m7.061 7.061l-2.879-2.879M12 12l2.879-2.879'},
@@ -233,8 +234,123 @@ const PROCESS_STEPS = [
   {name:'Packaging & Export',desc:'Custom packaging with full export documentation',icon:'M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4'}
 ];
 
-fetch('../../data/content.json').then(r=>r.json()).then(d=>{
-  const c=d.company,cap=d.capabilities,exp=d.exportInfo;
+const d = {
+  "company": {
+    "name": "Apex Sportswear Industries",
+    "tagline": "Engineered for Performance. Built for the World.",
+    "description": "A leading sportswear manufacturer based in Sialkot, Pakistan, specializing in OEM/ODM custom team uniforms, compression wear, fightwear, and athletic apparel for global brands and clubs. With over 18 years of export experience, we deliver precision-engineered sportswear to 35+ countries across six continents.",
+    "mission": "To empower athletes and teams worldwide with high-performance sportswear that combines cutting-edge technology, superior craftsmanship, and sustainable manufacturing practices.",
+    "vision": "To be the most trusted sportswear manufacturing partner for global brands, known for quality, innovation, and reliability.",
+    "values": ["Quality First", "Innovation", "Sustainability", "Partnership", "Integrity"],
+    "founded": 2005,
+    "location": "Sialkot, Punjab, Pakistan",
+    "employees": "250+",
+    "factorySize": "45,000 sq ft",
+    "annualOutput": "1.5M+ pieces/year",
+    "history": [
+      {"year": "2005", "event": "Founded as a small garment workshop in Sialkot"},
+      {"year": "2008", "event": "First international export order to Germany"},
+      {"year": "2010", "event": "ISO 9001 certification achieved"},
+      {"year": "2013", "event": "Expanded factory to 30,000 sq ft"},
+      {"year": "2015", "event": "OEKO-TEX Standard 100 certification"},
+      {"year": "2018", "event": "Reached 1M pieces annual production"},
+      {"year": "2020", "event": "BSCI and SEDEX certifications"},
+      {"year": "2023", "event": "Factory expansion to 45,000 sq ft"},
+      {"year": "2025", "event": "Serving 35+ countries with 250+ workforce"}
+    ]
+  },
+  "capabilities": {
+    "description": "Vertically integrated manufacturing from fabric sourcing to finished product, with in-house sublimation, embroidery, cut-and-sew, and quality assurance. Our facility houses modern German and Japanese machinery operated by skilled craftsmen with decades of experience.",
+    "services": ["OEM Manufacturing", "ODM Development", "Private Label", "Sublimation Printing", "Screen Printing", "Embroidery", "Cut & Sew", "Fabric Sourcing", "Tech Pack Development", "Sampling & Prototyping"],
+    "machinery": ["Sublimation Heat Press Systems", "Multi-needle Embroidery Machines", "Automated Gerber Cutting", "Juki Industrial Sewing", "Fabric Inspection Machines", "Ultrasonic Welding", "Laser Cutting Systems"],
+    "capacity": "1.5M+ pieces annually",
+    "leadTime": "2-4 weeks production after sample approval",
+    "moq": "50 pieces per style/color",
+    "qualityControl": "Four-stage AQL 2.5 inspection process with dedicated QC team at every production stage"
+  },
+  "products": [
+    {"id":"football-kits","name":"Football Kits","category":"Team Sports","description":"Custom sublimation-printed football uniforms with moisture-wicking polyester. Full kit options include jersey, shorts, and socks. FIFA-compliant materials available for professional leagues.","longDescription":"Our football kits are engineered for peak performance on the pitch. Using advanced sublimation printing technology, we create vibrant, fade-resistant designs that maintain their quality wash after wash. Each kit features moisture-wicking fabric that keeps players cool and dry, reinforced stitching for durability, and customizable options including team logos, player names, and numbers.","features":["Sublimation printed","Moisture-wicking","100% polyester","Custom logos","FIFA-compliant","Anti-rip fabric","Breathable mesh panels","UV protection"],"specs":{"material":"100% Polyester, 140-180 GSM","sizes":"XS - 3XL, Custom sizing available","colors":"Unlimited via sublimation","moq":"50 sets","technique":"Full sublimation printing","wash":"Machine wash cold, hang dry"},"applications":["Professional clubs","Academy teams","School teams","Recreational leagues","National teams"]},
+    {"id":"cricket-wear","name":"Cricket Apparel","category":"Team Sports","description":"Professional cricket uniforms including playing kits, training wear, and team travel gear. UV-protective fabrics with moisture management technology for long-format matches.","longDescription":"Designed for the rigors of cricket, our apparel combines traditional craftsmanship with modern fabric technology. From Test match whites to colorful T20 kits, we produce uniforms that meet the highest standards of the game. UV-protective fabrics shield players during long days in the field, while moisture management keeps them comfortable.","features":["Breathable mesh","UV protection SPF 50+","Quick dry","Reinforced stitching","Traditional fit options","Color-fast dyes"],"specs":{"material":"Polyester/Spandex, 150 GSM","sizes":"XS - 3XL","colors":"Sublimation unlimited","moq":"100 pieces","technique":"Sublimation + embroidery","wash":"Machine wash cold"},"applications":["Professional teams","Club cricket","School cricket","T20 leagues"]},
+    {"id":"boxing-gear","name":"Boxing Equipment","category":"Combat Sports","description":"Professional boxing shorts, robes, gloves, and protective gear manufactured to international competition standards. Trusted by promoters and gyms worldwide.","longDescription":"Our boxing equipment is crafted for fighters who demand the best. From amateur to professional level, our gear meets the standards of major boxing organizations. Hand-stitched satin shorts, padded gloves with genuine leather, and robes with custom embroidery — every piece is built to perform under the brightest lights.","features":["Competition grade","Reinforced padding","Custom embroidery","AIBA-approved options","Genuine leather","Hand-stitched"],"specs":{"material":"Satine/Satin, Genuine Leather","sizes":"XS - 5XL","colors":"Sublimation + custom","moq":"50 pieces","technique":"Embroidery + sublimation","wash":"Spot clean, air dry"},"applications":["Professional boxing","Amateur boxing","Gyms & training centers","Promotions & events"]},
+    {"id":"mma-fightwear","name":"MMA & Fightwear","category":"Combat Sports","description":"Mixed martial arts shorts, rashguards, and gi uniforms designed for durability and freedom of movement. Competition-ready with reinforced stress points.","longDescription":"Built for the cage, our MMA fightwear withstands the most intense training and competition. 4-way stretch fabrics allow full range of motion, while reinforced seams survive the toughest grappling sessions. Our rashguards feature anti-microbial treatment, and our shorts have secure waistbands that stay put through every round.","features":["4-way stretch","Anti-slip waistband","Reinforced seams","Sublimation ready","Anti-microbial","Flatlock stitching"],"specs":{"material":"Polyester/Spandex, 200 GSM","sizes":"XS - 3XL","colors":"Unlimited","moq":"50 pieces","technique":"Sublimation + screen print","wash":"Machine wash cold, no bleach"},"applications":["MMA gyms","BJJ academies","Boxing clubs","Competitions"]},
+    {"id":"running-apparel","name":"Running Apparel","category":"Athletic Wear","description":"Performance running shirts, shorts, tights, and jackets with reflective details and ergonomic design. Engineered for marathon, trail, and everyday running.","longDescription":"Every stitch of our running apparel is designed with the runner in mind. Ergonomic paneling follows the body's natural movement, reflective elements ensure visibility in low light, and ventilation zones provide targeted cooling. From 5K to ultramarathon, our gear performs when it matters most.","features":["Reflective elements","Ventilation zones","Flatlock seams","Lightweight","Ergonomic paneling","Moisture management"],"specs":{"material":"Polyester/Spandex, Nylon/Spandex","sizes":"XS - 3XL","colors":"Sublimation + solid dye","moq":"100 pieces","technique":"Sublimation + heat transfer","wash":"Machine wash cold, tumble dry low"},"applications":["Running clubs","Marathon events","Athletic brands","Retail sportswear"]},
+    {"id":"gym-fitness","name":"Gym & Fitness Wear","category":"Athletic Wear","description":"Men's and women's training apparel including tank tops, leggings, shorts, and sports bras. Squat-proof, sweat-wicking fabrics for intense workouts.","longDescription":"Our gym and fitness collection is designed for athletes who push their limits. Squat-proof opacity ensures confidence during any exercise, compression fit options provide muscle support, and sweat-wicking technology keeps you dry. Every piece is tested in real training environments before reaching production.","features":["Squat-proof","Sweat-wicking","Compression fit","Custom branding","4-way stretch","Anti-odor treatment"],"specs":{"material":"Nylon/Spandex, Polyester/Spandex","sizes":"XS - 3XL","colors":"Unlimited","moq":"50 pieces","technique":"Sublimation + screen print","wash":"Machine wash cold, no fabric softener"},"applications":["Gyms & fitness centers","CrossFit boxes","Personal trainers","Athletic brands"]},
+    {"id":"basketball-uniforms","name":"Basketball Uniforms","category":"Team Sports","description":"Full basketball uniform sets with sublimation printing, mesh construction, and team customization. Jersey and short sets with matching accessories.","longDescription":"Our basketball uniforms combine style with performance. Mesh construction provides maximum breathability during intense games, while sublimation printing allows unlimited design possibilities. From NBA-style jerseys to custom team sets, we deliver uniforms that look as good as they perform.","features":["Mesh breathable","Full sublimation","Team numbering","Anti-rip","Moisture-wicking","Quick-dry"],"specs":{"material":"Mesh Polyester, 130 GSM","sizes":"XS - 3XL","colors":"Unlimited","moq":"50 sets","technique":"Full sublimation","wash":"Machine wash cold"},"applications":["Professional leagues","School teams","Recreational leagues","Basketball academies"]},
+    {"id":"martial-arts","name":"Martial Arts Uniforms","category":"Combat Sports","description":"Karate, taekwondo, judo, and kung fu uniforms with reinforced stitching and competition-grade construction. Approved for international tournaments.","longDescription":"Our martial arts uniforms honor tradition while embracing modern performance. Reinforced knees and elbows withstand intense training, lightweight fabrics allow fluid movement, and competition-grade construction meets the standards of international federations. Available in traditional and modern cuts.","features":["Competition approved","Reinforced knees","Lightweight","Custom embroidery","Multiple weight options","Traditional & modern cuts"],"specs":{"material":"Cotton/Polyester, Canvas","sizes":"XS - 5XL, Kids available","colors":"White, Black, Navy + custom","moq":"100 pieces","technique":"Embroidery + sublimation","wash":"Machine wash warm, tumble dry"},"applications":["Martial arts schools","Tournaments","Dojos & training centers","National teams"]},
+    {"id":"sports-accessories","name":"Sports Accessories","category":"Accessories","description":"Bags, headbands, wristbands, shin guards, socks, and other sportswear accessories. Custom branding available on all items.","longDescription":"Complete your sportswear line with our accessories collection. From gym bags to headbands, every item can be customized with your brand. We use the same quality standards for accessories as our main product lines, ensuring consistency across your entire range.","features":["Custom branding","Bulk pricing","Multiple materials","Full customization","Competitive pricing","Quick turnaround"],"specs":{"material":"Various","sizes":"One size / Multiple","colors":"Custom all colors","moq":"200 pieces","technique":"Embroidery + screen print + sublimation","wash":"Varies by product"},"applications":["Team suppliers","Retail brands","Gyms & fitness","Corporate gifts"]},
+    {"id":"compression-wear","name":"Compression Wear","category":"Athletic Wear","description":"Performance compression tights, tops, and sleeves with graduated compression zones. Designed for athletic recovery and enhanced performance.","longDescription":"Our compression wear uses medical-grade fabrics with graduated compression zones that support muscles during activity and aid recovery afterward. Scientifically designed compression patterns improve blood circulation, reduce muscle fatigue, and enhance proprioception. Trusted by professional athletes worldwide.","features":["Graduated compression","Muscle support","Quick dry","Anti-odor","Medical-grade fabric","Seamless construction"],"specs":{"material":"Nylon/Spandex, Polyester/Spandex","sizes":"XS - 3XL","colors":"Sublimation + solid","moq":"100 pieces","technique":"Seamless knitting + sublimation","wash":"Machine wash cold, no dryer"},"applications":["Professional athletes","Recovery centers","Running clubs","Team sports"]}
+  ],
+  "certifications": [
+    {"name":"ISO 9001:2015","description":"Quality Management System — Consistent quality across all production lines with documented processes and continuous improvement","icon":"🏆","benefit":"Ensures every product meets international quality standards"},
+    {"name":"ISO 14001:2015","description":"Environmental Management System — Sustainable manufacturing practices with reduced environmental impact","icon":"🌿","benefit":"Responsible manufacturing that protects the environment"},
+    {"name":"OEKO-TEX Standard 100","description":"Tested for harmful substances — Safe for direct skin contact, certified for baby articles","icon":"✅","benefit":"Guaranteed safety for end consumers"},
+    {"name":"BSCI","description":"Business Social Compliance Initiative — Ethical labor practices and fair working conditions","icon":"🤝","benefit":"Ethically manufactured products your customers can trust"},
+    {"name":"SEDEX/SMETA","description":"Ethical trade audit compliant — Transparent supply chain with verified social responsibility","icon":"📋","benefit":"Full supply chain transparency and accountability"},
+    {"name":"CE Marking","description":"European Conformity for protective sportswear — Meets EU safety, health, and environmental requirements","icon":"🇪🇺","benefit":"Ready for European markets without additional certification"},
+    {"name":"FIFA Quality","description":"Approved football supplier — Products meet FIFA's strict quality and performance standards","icon":"⚽","benefit":"Official quality approval for football products"},
+    {"name":"WRAP","description":"Worldwide Responsible Accredited Production — Global manufacturing standards for ethical production","icon":"🌍","benefit":"Globally recognized ethical manufacturing certification"}
+  ],
+  "materials": [
+    {"name":"Polyester","description":"Lightweight, durable, and moisture-wicking. The most popular fabric for sportswear.","properties":["Moisture-wicking","Quick-dry","Durable","Color-fast","Affordable"],"uses":["Football kits","Basketball uniforms","Running apparel"]},
+    {"name":"Nylon/Spandex","description":"Stretchy and supportive with excellent shape retention. Ideal for compression wear.","properties":["4-way stretch","Shape retention","Compression","Smooth feel","Lightweight"],"uses":["Compression wear","Gym wear","MMA fightwear"]},
+    {"name":"Cotton/Polyester Blend","description":"Comfort of cotton with durability of polyester. Perfect for martial arts uniforms.","properties":["Comfortable","Breathable","Durable","Easy care","Traditional feel"],"uses":["Martial arts uniforms","Training wear","Casual sportswear"]},
+    {"name":"Mesh Polyester","description":"Maximum breathability with lightweight construction. Essential for high-intensity sports.","properties":["Ultra-breathable","Lightweight","Quick-dry","Anti-rip","Flexible"],"uses":["Basketball uniforms","Running tops","Ventilated panels"]}
+  ],
+  "whyChooseUs": [
+    {"title":"18+ Years Experience","description":"Nearly two decades of manufacturing expertise for global sportswear brands"},
+    {"title":"Low MOQ from 50 Pieces","description":"Flexible minimum orders that grow with your business — no excessive inventory"},
+    {"title":"Fast Sampling","description":"3-5 day sampling with detailed tech packs before full production begins"},
+    {"title":"Full OEM/ODM","description":"From your designs to our designs — complete manufacturing flexibility"},
+    {"title":"Export Expertise","description":"GSP+ duty advantage into EU, DDP shipping to 35+ countries"},
+    {"title":"Quality Guaranteed","description":"Four-stage AQL 2.5 inspection with dedicated QC at every step"}
+  ],
+  "faq": [
+    {"question":"What is your minimum order quantity?","answer":"Our MOQ is 50 pieces per style/color for most products. This allows small brands to start with manageable orders and scale up as they grow."},
+    {"question":"How long does production take?","answer":"Standard production is 2-4 weeks after sample approval. Rush orders can be accommodated with expedited timelines."},
+    {"question":"Do you offer sampling?","answer":"Yes, we provide pre-production samples in 3-5 days. Sample cost is refunded on orders of 500+ pieces."},
+    {"question":"What certifications do you have?","answer":"We hold ISO 9001, ISO 14001, OEKO-TEX 100, BSCI, SEDEX, CE Marking, FIFA Quality, and WRAP certifications."},
+    {"question":"Can you handle custom designs?","answer":"Absolutely. We offer full OEM/ODM services with tech pack development, sampling, and unlimited design customization."},
+    {"question":"What are your payment terms?","answer":"We accept T/T (bank transfer), L/C (Letter of Credit), Western Union, and PayPal for sample orders."},
+    {"question":"Do you ship internationally?","answer":"Yes, we export to 35+ countries with FOB, CIF, EXW, and DDP shipping terms available."},
+    {"question":"What is GSP+ and how does it benefit me?","answer":"Pakistan's GSP+ status allows 0% import duty into all 27 EU member states, giving you a ~12% cost advantage over non-GSP origins."}
+  ],
+  "exportInfo": {
+    "markets":["Europe","North America","Middle East","Asia Pacific","Africa","South America"],
+    "countries":["United Kingdom","Germany","France","Italy","Spain","United States","Canada","UAE","Saudi Arabia","Qatar","Australia","Japan","South Korea","Nigeria","South Africa","Brazil"],
+    "shippingTerms":["FOB Sialkot","CIF Destination","EXW Factory","DDP Door-to-Door"],
+    "paymentTerms":["T/T (Telegraphic Transfer)","L/C (Letter of Credit)","Western Union","PayPal (samples)"],
+    "specialConditions":["GSP+ 0% import duty into all 27 EU member states","Pakistan Origin Certificate for preferential tariffs","Full export documentation prepared in-house","Door-to-door DDP shipping to USA, UK, EU, Australia, Canada"]
+  },
+  "stats": [
+    {"value":"18+","label":"Years of Experience"},
+    {"value":"1.5M+","label":"Pieces Per Year"},
+    {"value":"35+","label":"Countries Served"},
+    {"value":"250+","label":"Skilled Workers"},
+    {"value":"45K","label":"Sq Ft Factory"},
+    {"value":"98%","label":"On-time Delivery"}
+  ],
+  "testimonials": [
+    {"quote":"Outstanding quality and communication. Our custom team kits arrived on time and exceeded expectations. Apex is a reliable long-term partner.","author":"Marcus Weber","company":"FC Bayern Replica League","country":"Germany"},
+    {"quote":"We have been sourcing boxing equipment from Apex for 5 years. Consistent quality, competitive pricing, and they understand our market.","author":"James Mitchell","company":"FightRight Distribution","country":"United Kingdom"},
+    {"quote":"The sublimation printing quality is world-class. Our fitness brand's custom leggings are bestsellers, thanks to Apex's manufacturing.","author":"Sarah Al-Hassan","company":"FitGear UAE","country":"United Arab Emirates"},
+    {"quote":"Apex delivered our entire martial arts uniform line in just 3 weeks. The quality and attention to detail is unmatched.","author":"Takeshi Yamamoto","company":"Bushido Japan","country":"Japan"},
+    {"quote":"From tech pack to finished product, the process was seamless. Our academy kits look professional and perform brilliantly.","author":"Carlos Rodriguez","company":"Academia Deportiva","country":"Spain"}
+  ],
+  "industriesServed":["Professional Sports Clubs","Academy & School Teams","Fitness & Gym Brands","Martial Arts Schools","Boxing & MMA Promoters","Retail Sportswear Brands","Government Sports Programs","Corporate Wellness Programs"],
+  "contact": {
+    "address":"Industrial Area, Sialkot, Punjab 51310, Pakistan",
+    "phone":"+92 52 123 4567",
+    "whatsapp":"+92 300 123 4567",
+    "email":"info@apexsportswear.com",
+    "salesEmail":"sales@apexsportswear.com",
+    "website":"www.apexsportswear.com",
+    "workingHours":"Monday - Saturday: 9:00 AM - 6:00 PM (PKT)",
+    "responseTime":"We respond to all inquiries within 24 hours",
+    "social":{"linkedin":"linkedin.com/company/apexsportswear","facebook":"facebook.com/apexsportswear","instagram":"instagram.com/apexsportswear","youtube":"youtube.com/@apexsportswear"}
+  }
+}
+;
+const c=d.company,cap=d.capabilities,exp=d.exportInfo;
   const heroColor='#FFFFFF';
   const accent='#0047AB';
   const primary='#2C3E50';
@@ -275,15 +391,15 @@ fetch('../../data/content.json').then(r=>r.json()).then(d=>{
 
   document.querySelector('#why-grid').innerHTML=d.whyChooseUs.map(w=>'<div class="p-5 rounded" style="background:'+lightBg+'"><h3 class="font-display text-lg font-bold mb-2" style="color:'+accent+'">'+w.title+'</h3><p class="text-sm opacity-70">'+w.description+'</p></div>').join('');
 
-  document.querySelector('#certs-grid').innerHTML=d.certifications.map(x=>'<div class="p-5 rounded text-center" style="background:'+lightBg+'"><span class="text-3xl block mb-2">'+x.icon+'</span><h4 class="font-semibold text-sm mb-1">'+x.name+'</h4><p class="text-xs opacity-50 mb-2">'+x.description+'</p><p class="text-xs italic" style="color:'+accent+'">'+x.benefit+'</p></div>').join('');
+  document.querySelector('#certs-grid').innerHTML=d.certifications.map(x=>'<div class="p-5 rounded text-center" style="background:'+lightBg+';border:1px solid '+accent+'15"><span class="text-3xl block mb-2">'+x.icon+'</span><h4 class="font-semibold text-sm mb-1">'+x.name+'</h4><p class="text-xs opacity-50 mb-2">'+x.description+'</p><p class="text-xs italic" style="color:'+accent+'">'+x.benefit+'</p></div>').join('');
 
-  document.querySelector('#export-grid').innerHTML='<div><h3 class="font-display text-xl font-bold mb-4">Countries We Serve</h3><div class="flex flex-wrap gap-2 mb-8">'+exp.countries.map(c=>'<span class="text-sm px-3 py-1.5 rounded" style="background:'+accent+'11">'+c+'</span>').join('')+'</div><h3 class="font-display text-xl font-bold mb-4">Industries</h3><div class="flex flex-wrap gap-2">'+d.industriesServed.map(i=>'<span class="text-sm px-3 py-1.5 rounded" style="background:'+primary+';color:'+heroText+'">'+i+'</span>').join('')+'</div></div><div><h3 class="font-display text-xl font-bold mb-4">Trade Terms</h3><div class="space-y-3"><div class="p-4 rounded" style="background:'+lightBg+'"><span class="font-mono text-xs uppercase tracking-wide block mb-1" style="color:'+accent+'">Shipping</span><span class="text-sm">'+exp.shippingTerms.join(' · ')+'</span></div><div class="p-4 rounded" style="background:'+lightBg+'"><span class="font-mono text-xs uppercase tracking-wide block mb-1" style="color:'+accent+'">Payment</span><span class="text-sm">'+exp.paymentTerms.join(' · ')+'</span></div><div class="p-4 rounded" style="background:'+lightBg+'"><span class="font-mono text-xs uppercase tracking-wide block mb-1" style="color:'+accent+'">Special Conditions</span><span class="text-sm">'+exp.specialConditions.join(' · ')+'</span></div></div></div>';
+  document.querySelector('#export-grid').innerHTML='<div><h3 class="font-display text-xl font-bold mb-4">Countries We Serve</h3><div class="flex flex-wrap gap-2 mb-8">'+exp.countries.map(c=>'<span class="text-sm px-3 py-1.5 rounded" style="background:'+accent+'11">'+c+'</span>').join('')+'</div><h3 class="font-display text-xl font-bold mb-4">Industries</h3><div class="flex flex-wrap gap-2">'+d.industriesServed.map(i=>'<span class="text-sm px-3 py-1.5 rounded" style="background:'+primary+';color:'+heroColor+'">'+i+'</span>').join('')+'</div></div><div><h3 class="font-display text-xl font-bold mb-4">Trade Terms</h3><div class="space-y-3"><div class="p-4 rounded" style="background:'+lightBg+'"><span class="font-mono text-xs uppercase tracking-wide block mb-1" style="color:'+accent+'">Shipping</span><span class="text-sm">'+exp.shippingTerms.join(' · ')+'</span></div><div class="p-4 rounded" style="background:'+lightBg+'"><span class="font-mono text-xs uppercase tracking-wide block mb-1" style="color:'+accent+'">Payment</span><span class="text-sm">'+exp.paymentTerms.join(' · ')+'</span></div><div class="p-4 rounded" style="background:'+lightBg+'"><span class="font-mono text-xs uppercase tracking-wide block mb-1" style="color:'+accent+'">Special Conditions</span><span class="text-sm">'+exp.specialConditions.join(' · ')+'</span></div></div></div>';
 
-  document.querySelector('#industries').innerHTML=d.industriesServed.map(i=>'<span class="text-sm px-4 py-2 rounded font-medium" style="background:'+primary+';color:'+heroText+'">'+i+'</span>').join('');
+  document.querySelector('#industries').innerHTML=d.industriesServed.map(i=>'<span class="text-sm px-4 py-2 rounded font-medium" style="background:'+primary+';color:'+heroColor+'">'+i+'</span>').join('');
 
   document.querySelector('#testis').innerHTML=d.testimonials.map(t=>'<div class="p-6 rounded" style="background:'+lightBg+'"><p class="text-sm leading-relaxed mb-4 italic opacity-80">"'+t.quote+'"</p><div class="flex items-center gap-3"><div class="w-10 h-10 rounded-full flex items-center justify-center font-bold text-xs" style="background:'+accent+'22;color:'+accent+'">'+t.author.split(' ').map(n=>n[0]).join('')+'</div><div><span class="text-sm font-semibold block">'+t.author+'</span><span class="text-xs" style="color:'+accent+'">'+t.company+' — '+t.country+'</span></div></div></div>').join('');
 
-  document.querySelector('#faq-grid').innerHTML=d.faq.map(f=>'<div class="p-5 rounded" style="background:'+lightBg+'"><h3 class="font-display text-base font-bold mb-2">'+f.question+'</h3><p class="text-sm opacity-70">'+f.answer+'</p></div>').join('');
+  document.querySelector('#faq-grid').innerHTML=d.faq.map(f=>'<div class="p-5 rounded" style="background:'+lightBg+';border:1px solid '+accent+'15"><h3 class="font-display text-base font-bold mb-2">'+f.question+'</h3><p class="text-sm opacity-70">'+f.answer+'</p></div>').join('');
 
   document.querySelector('#c-info').innerHTML='<div class="flex items-start gap-3"><span style="color:'+accent+'">📍</span><span class="text-sm">'+d.contact.address+'</span></div><div class="flex items-start gap-3"><span style="color:'+accent+'">📞</span><span class="text-sm">'+d.contact.phone+'</span></div><div class="flex items-start gap-3"><span style="color:'+accent+'">💬</span><span class="text-sm">'+d.contact.whatsapp+'</span></div><div class="flex items-start gap-3"><span style="color:'+accent+'">✉️</span><span class="text-sm">'+d.contact.email+'</span></div><div class="flex items-start gap-3"><span style="color:'+accent+'">🌐</span><span class="text-sm">'+d.contact.website+'</span></div>';
   document.querySelector('#c-response').innerHTML='<p class="text-sm"><strong style="color:'+accent+'">⏰ Working Hours:</strong> '+d.contact.workingHours+'</p><p class="text-sm mt-2"><strong style="color:'+accent+'">⚡ Response Time:</strong> '+d.contact.responseTime+'</p>';
@@ -292,8 +408,8 @@ fetch('../../data/content.json').then(r=>r.json()).then(d=>{
   document.querySelector('#f-prods').innerHTML=d.products.slice(0,6).map(p=>'<li><a href="#products" class="hover:opacity-100 transition-opacity">'+p.name+'</a></li>').join('');
   document.querySelector('#f-contact').innerHTML='<li>'+d.contact.address+'</li><li>'+d.contact.phone+'</li><li>'+d.contact.email+'</li><li>'+d.contact.website+'</li>';
   document.querySelector('#f-copy').textContent=new Date().getFullYear();
-  document.querySelector('#f-social').innerHTML=Object.entries(d.contact.social).map(([k,v])=>'<a href="https://'+v+'" target="_blank" class="text-xs uppercase tracking-wide opacity-40 hover:opacity-100 transition-opacity" style="color:'+heroText+'">'+k+'</a>').join('')+'<span class="text-xs opacity-30" style="color:'+heroText+'">Sialkot, Pakistan</span>';
-});
+  document.querySelector('#f-social').innerHTML=Object.entries(d.contact.social).map(([k,v])=>'<a href="https://'+v+'" target="_blank" class="text-xs uppercase tracking-wide opacity-60 hover:opacity-100 transition-opacity" style="color:'+heroColor+'">'+k+'</a>').join('')+'<span class="text-xs opacity-50" style="color:'+heroColor+'">Sialkot, Pakistan</span>';
+
 document.querySelector('#mob-btn').addEventListener('click',()=>document.querySelector('#mob-menu').classList.toggle('hidden'));
 document.querySelectorAll('a[href^="#"]').forEach(a=>a.addEventListener('click',e=>{e.preventDefault();const t=document.querySelector(a.getAttribute('href'));if(t){t.scrollIntoView({behavior:'smooth'});document.querySelector('#mob-menu').classList.add('hidden');}}));
 </script>
