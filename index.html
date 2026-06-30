@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Apex Sportswear — Template Catalogue</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Inter',sans-serif;background:#0A0A0A;color:#FAFAFA}
+.scrollbar-hide::-webkit-scrollbar{display:none}
+.scrollbar-hide{-ms-overflow-style:none;scrollbar-width:none}
+.card{opacity:0;transform:translateY(30px);transition:opacity .5s ease,transform .5s ease}
+.card.visible{opacity:1;transform:translateY(0)}
+.thumb{transition:transform .4s ease}
+.card:hover .thumb{transform:scale(1.05)}
+.card:hover .overlay{opacity:1}
+.overlay{opacity:0;transition:opacity .3s ease}
+@keyframes pulse{0%,100%{opacity:.4}50%{opacity:1}}
+.loader{animation:pulse 1.2s ease-in-out infinite}
+</style>
+</head>
+<body>
+
+<header class="fixed top-0 w-full z-50 border-b border-white/10" style="background:#0A0A0Acc;backdrop-filter:blur(12px)">
+<div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+<div>
+<h1 class="text-lg font-bold tracking-tight" style="font-family:'Space Grotesk',sans-serif">APEX <span style="color:#C5993A">SPORT</span></h1>
+<p class="text-xs text-white/40 tracking-wide">Template Catalogue — 50 Designs</p>
+</div>
+<div class="flex items-center gap-4">
+<div class="relative">
+<input type="text" id="search" placeholder="Search templates..." class="bg-white/5 border border-white/10 rounded-lg px-4 py-2 text-sm text-white/80 placeholder:text-white/30 focus:outline-none focus:border-white/30 w-56">
+<svg class="w-4 h-4 absolute right-3 top-1/2 -translate-y-1/2 text-white/30" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+</div>
+<select id="category-filter" class="bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-sm text-white/80 focus:outline-none focus:border-white/30">
+<option value="all">All Templates</option>
+<option value="heritage">Heritage (01-05)</option>
+<option value="tech">Tech (06-10)</option>
+<option value="industrial">Industrial (11-15)</option>
+<option value="minimal">Minimal (16-20)</option>
+<option value="performance">Performance (21-25)</option>
+<option value="global">Global (26-30)</option>
+<option value="modern">Modern (31-35)</option>
+<option value="editorial">Editorial (36-40)</option>
+<option value="dark">Dark (41-45)</option>
+<option value="artisan">Artisan (46-50)</option>
+</select>
+<span id="count" class="text-xs text-white/30 font-mono"></span>
+</div>
+</div>
+</header>
+
+<main class="pt-24 pb-20 px-6 max-w-7xl mx-auto">
+<div id="grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+<div id="sentinel" class="h-20 flex items-center justify-center">
+<div id="loader" class="loader text-sm text-white/40 font-mono">Loading more templates...</div>
+</div>
+</main>
+
+<script>
+const TEMPLATES = [
+  {id:'01',dir:'champion-heritage',name:"Champion's Heritage",primary:'#0A1628',accent:'#C5993A',bg:'#FAF7F2',cat:'heritage',fonts:'Playfair Display'},
+  {id:'02',dir:'dynasty-sport',name:'Dynasty Sport',primary:'#1B4332',accent:'#B8860B',bg:'#FFFFF0',cat:'heritage',fonts:'Cormorant Garamond'},
+  {id:'03',dir:'varsity-legacy',name:'Varsity Legacy',primary:'#1A1A2E',accent:'#8B0000',bg:'#F5F0E8',cat:'heritage',fonts:'Bebas Neue'},
+  {id:'04',dir:'old-guard',name:'Old Guard',primary:'#2D2D2D',accent:'#B87333',bg:'#F4EDE4',cat:'heritage',fonts:'Libre Baskerville'},
+  {id:'05',dir:'heritage-craft',name:'Heritage Craft',primary:'#1A535C',accent:'#D4A843',bg:'#FAF9F6',cat:'heritage',fonts:'DM Serif Display'},
+  {id:'06',dir:'tech-forge',name:'Tech Forge',primary:'#0D0D0D',accent:'#AAFF00',bg:'#E5E5E5',cat:'tech',fonts:'Space Grotesk'},
+  {id:'07',dir:'aero-sport',name:'Aero Sport',primary:'#1C1C1E',accent:'#0066FF',bg:'#F0F2F5',cat:'tech',fonts:'Outfit'},
+  {id:'08',dir:'carbon',name:'Carbon',primary:'#1C1C1C',accent:'#E63946',bg:'#FFFFFF',cat:'tech',fonts:'Rajdhani'},
+  {id:'09',dir:'kinetic',name:'Kinetic',primary:'#1A1A1A',accent:'#FF6B35',bg:'#FFFFFF',cat:'tech',fonts:'Rajdhani'},
+  {id:'10',dir:'velocity',name:'Velocity',primary:'#190033',accent:'#00E5FF',bg:'#F5F5F5',cat:'tech',fonts:'Syne'},
+  {id:'11',dir:'steel-works',name:'Steel Works',primary:'#2C3539',accent:'#FFD700',bg:'#E0E0E0',cat:'industrial',fonts:'Oswald'},
+  {id:'12',dir:'ironclad',name:'Ironclad',primary:'#1B1B1B',accent:'#B7410E',bg:'#F5F0E8',cat:'industrial',fonts:'Barlow Condensed'},
+  {id:'13',dir:'factory-floor',name:'Factory Floor',primary:'#0F172A',accent:'#DC2626',bg:'#F8FAFC',cat:'industrial',fonts:'Barlow'},
+  {id:'14',dir:'powerhouse',name:'Powerhouse',primary:'#212529',accent:'#0D6EFD',bg:'#F8F9FA',cat:'industrial',fonts:'Montserrat'},
+  {id:'15',dir:'heavy-duty',name:'Heavy Duty',primary:'#000000',accent:'#3D4A2A',bg:'#FFFFFF',cat:'industrial',fonts:'Teko'},
+  {id:'16',dir:'pure-form',name:'Pure Form',primary:'#1E3A5F',accent:'#3B82F6',bg:'#F7F8FA',cat:'minimal',fonts:'Plus Jakarta Sans'},
+  {id:'17',dir:'clarity-sport',name:'Clarity Sport',primary:'#1C1917',accent:'#0D9488',bg:'#FAFAF9',cat:'minimal',fonts:'Geist'},
+  {id:'18',dir:'essential-kit',name:'Essential Kit',primary:'#111827',accent:'#6366F1',bg:'#F3F4F6',cat:'minimal',fonts:'Inter'},
+  {id:'19',dir:'precision',name:'Precision',primary:'#0F172A',accent:'#2563EB',bg:'#F1F5F9',cat:'minimal',fonts:'IBM Plex Sans'},
+  {id:'20',dir:'calm-authority',name:'Calm Authority',primary:'#1C1917',accent:'#166534',bg:'#FEFCE8',cat:'minimal',fonts:'Lora'},
+  {id:'21',dir:'sprint',name:'Sprint',primary:'#000000',accent:'#FFE500',bg:'#FFFFFF',cat:'performance',fonts:'Bebas Neue'},
+  {id:'22',dir:'power-play',name:'Power Play',primary:'#0A1F44',accent:'#C41E3A',bg:'#FFFFFF',cat:'performance',fonts:'Anton'},
+  {id:'23',dir:'endurance',name:'Endurance',primary:'#1C1917',accent:'#EA580C',bg:'#FFFBEB',cat:'performance',fonts:'Sora'},
+  {id:'24',dir:'peak-form',name:'Peak Form',primary:'#18181B',accent:'#84CC16',bg:'#F4F4F5',cat:'performance',fonts:'Outfit'},
+  {id:'25',dir:'apex-predator',name:'Apex Predator',primary:'#0C0A09',accent:'#EAB308',bg:'#FEF9C3',cat:'performance',fonts:'Playfair Display'},
+  {id:'26',dir:'global-reach',name:'Global Reach',primary:'#2C3E50',accent:'#0047AB',bg:'#E6F0FF',cat:'global',fonts:'Poppins'},
+  {id:'27',dir:'export-elite',name:'Export Elite',primary:'#0F172A',accent:'#F59E0B',bg:'#F8FAFC',cat:'global',fonts:'Plus Jakarta Sans'},
+  {id:'28',dir:'world-sport',name:'World Sport',primary:'#164E63',accent:'#0891B2',bg:'#ECFEFF',cat:'global',fonts:'Nunito Sans'},
+  {id:'29',dir:'cross-continental',name:'Cross Continental',primary:'#0F172A',accent:'#DC2626',bg:'#F1F5F9',cat:'global',fonts:'Space Grotesk'},
+  {id:'30',dir:'trade-titan',name:'Trade Titan',primary:'#111827',accent:'#2563EB',bg:'#F9FAFB',cat:'global',fonts:'Montserrat'},
+  {id:'31',dir:'disrupt-sport',name:'Disrupt Sport',primary:'#0A0A0A',accent:'#39FF14',bg:'#FFFFFF',cat:'modern',fonts:'Syne'},
+  {id:'32',dir:'fresh-kit',name:'Fresh Kit',primary:'#2D3436',accent:'#FF6B6B',bg:'#FFFFFF',cat:'modern',fonts:'Nunito'},
+  {id:'33',dir:'direct-sport',name:'Direct Sport',primary:'#111827',accent:'#F59E0B',bg:'#F8F9FA',cat:'modern',fonts:'Inter'},
+  {id:'34',dir:'next-gen',name:'Next Gen',primary:'#0F0A1F',accent:'#7C3AED',bg:'#F5F3FF',cat:'modern',fonts:'Geist'},
+  {id:'35',dir:'sport-lab',name:'Sport Lab',primary:'#1E293B',accent:'#2563EB',bg:'#EFF6FF',cat:'modern',fonts:'Plus Jakarta Sans'},
+  {id:'36',dir:'sportswear-post',name:'Sportswear Post',primary:'#1A1A1A',accent:'#8B0000',bg:'#FFF8E7',cat:'editorial',fonts:'Lora'},
+  {id:'37',dir:'athletic-standard',name:'Athletic Standard',primary:'#000000',accent:'#E53935',bg:'#FFFFFF',cat:'editorial',fonts:'DM Serif Display'},
+  {id:'38',dir:'pitch-report',name:'Pitch Report',primary:'#212121',accent:'#1A237E',bg:'#F5F5F0',cat:'editorial',fonts:'Merriweather'},
+  {id:'39',dir:'sideline-stories',name:'Sideline Stories',primary:'#3E2723',accent:'#2E7D32',bg:'#FAFAF5',cat:'editorial',fonts:'Libre Baskerville'},
+  {id:'40',dir:'match-day',name:'Match Day',primary:'#212121',accent:'#FF6D00',bg:'#F5F5F5',cat:'editorial',fonts:'Oswald'},
+  {id:'41',dir:'night-game',name:'Night Game',primary:'#0A0A0A',accent:'#00BFFF',bg:'#FFFFFF',cat:'dark',fonts:'Rajdhani'},
+  {id:'42',dir:'shadow-play',name:'Shadow Play',primary:'#1A1A1A',accent:'#B71C1C',bg:'#E0E0E0',cat:'dark',fonts:'Bebas Neue'},
+  {id:'43',dir:'midnight-kit',name:'Midnight Kit',primary:'#121212',accent:'#FFD700',bg:'#FFF8E1',cat:'dark',fonts:'Cormorant Garamond'},
+  {id:'44',dir:'arena',name:'Arena',primary:'#16213E',accent:'#00FF88',bg:'#F0F0F0',cat:'dark',fonts:'Outfit'},
+  {id:'45',dir:'blackout',name:'Blackout',primary:'#000000',accent:'#737373',bg:'#F5F5F5',cat:'dark',fonts:'Inter Tight'},
+  {id:'46',dir:'handcrafted-sport',name:'Handcrafted Sport',primary:'#3E2723',accent:'#8D6E63',bg:'#FFF8E1',cat:'artisan',fonts:'Crimson Pro'},
+  {id:'47',dir:'stitch-thread',name:'Stitch & Thread',primary:'#292524',accent:'#C2452D',bg:'#FAF9F6',cat:'artisan',fonts:'DM Serif Display'},
+  {id:'48',dir:'material-world',name:'Material World',primary:'#111827',accent:'#3B82F6',bg:'#F3F4F6',cat:'artisan',fonts:'Instrument Sans'},
+  {id:'49',dir:'quality-cut',name:'Quality Cut',primary:'#1C1917',accent:'#7F1D1D',bg:'#FEF2F2',cat:'artisan',fonts:'Fraunces'},
+  {id:'50',dir:'made-right',name:'Made Right',primary:'#1C1917',accent:'#166534',bg:'#FEFCE8',cat:'artisan',fonts:'Bitter'}
+];
+
+const BATCH = 9;
+let page = 0;
+let filtered = [...TEMPLATES];
+let loading = false;
+
+const grid = document.getElementById('grid');
+const loader = document.getElementById('loader');
+const count = document.getElementById('count');
+const search = document.getElementById('search');
+const catFilter = document.getElementById('category-filter');
+
+function createCard(t) {
+  const card = document.createElement('div');
+  card.className = 'card rounded-xl overflow-hidden';
+  card.style.background = '#111';
+  card.style.border = '1px solid rgba(255,255,255,0.06)';
+  const isDark = parseInt(t.primary.slice(1),16) < 0x808080;
+  card.innerHTML = `
+    <div class="thumb relative h-48 overflow-hidden" style="background:${t.primary}">
+      <div class="absolute inset-0 flex items-center justify-center" style="background:${t.primary}">
+        <div class="text-center">
+          <div class="w-16 h-16 mx-auto mb-3 rounded-full flex items-center justify-center" style="background:${t.accent}22;border:1px solid ${t.accent}44">
+            <svg class="w-8 h-8" style="color:${t.accent}" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+          </div>
+          <p class="font-bold text-lg tracking-tight" style="color:${isDark?'#FFFFFF':t.primary};font-family:'Space Grotesk',sans-serif">APEX</p>
+        </div>
+      </div>
+      <div class="absolute top-3 left-3 px-2 py-1 rounded text-xs font-mono font-bold" style="background:${t.accent};color:${t.primary}">${t.id}</div>
+      <a href="templates/${t.id}-${t.dir}/index.html" target="_blank" class="overlay absolute inset-0 flex items-center justify-center" style="background:${t.primary}cc">
+        <span class="px-6 py-3 rounded-lg text-sm font-semibold" style="background:${t.accent};color:${t.primary}">Open Template</span>
+      </a>
+    </div>
+    <div class="p-5">
+      <h3 class="font-bold text-white mb-1" style="font-family:'Space Grotesk',sans-serif">${t.name}</h3>
+      <p class="text-xs text-white/40 mb-4" style="font-family:monospace">${t.fonts}</p>
+      <div class="flex items-center gap-2 mb-4">
+        <div class="w-5 h-5 rounded-full border border-white/10" style="background:${t.primary}" title="Primary"></div>
+        <div class="w-5 h-5 rounded-full border border-white/10" style="background:${t.accent}" title="Accent"></div>
+        <div class="w-5 h-5 rounded-full border border-white/10" style="background:${t.bg}" title="Background"></div>
+      </div>
+      <div class="flex items-center justify-between">
+        <span class="text-xs px-2 py-1 rounded capitalize" style="background:rgba(255,255,255,0.05);color:rgba(255,255,255,0.4)">${t.cat}</span>
+        <a href="templates/${t.id}-${t.dir}/index.html" target="_blank" class="text-xs font-semibold hover:underline" style="color:${t.accent}">View →</a>
+      </div>
+    </div>
+  `;
+  requestAnimationFrame(() => {
+    setTimeout(() => card.classList.add('visible'), 50);
+  });
+  return card;
+}
+
+function loadBatch() {
+  if (loading) return;
+  loading = true;
+  const start = page * BATCH;
+  const end = Math.min(start + BATCH, filtered.length);
+  if (start >= filtered.length) {
+    loader.style.display = 'none';
+    loading = false;
+    return;
+  }
+  setTimeout(() => {
+    const frag = document.createDocumentFragment();
+    for (let i = start; i < end; i++) {
+      frag.appendChild(createCard(filtered[i]));
+    }
+    grid.appendChild(frag);
+    page++;
+    loading = false;
+    if (page * BATCH >= filtered.length) loader.style.display = 'none';
+  }, 150);
+}
+
+function reset() {
+  grid.innerHTML = '';
+  page = 0;
+  loader.style.display = '';
+  const q = search.value.toLowerCase();
+  const cat = catFilter.value;
+  filtered = TEMPLATES.filter(t => {
+    const matchQ = !q || t.name.toLowerCase().includes(q) || t.id.includes(q) || t.fonts.toLowerCase().includes(q) || t.cat.includes(q);
+    const matchCat = cat === 'all' || t.cat === cat;
+    return matchQ && matchCat;
+  });
+  count.textContent = filtered.length + ' templates';
+  loadBatch();
+}
+
+const observer = new IntersectionObserver(entries => {
+  if (entries[0].isIntersecting) loadBatch();
+}, {rootMargin: '200px'});
+observer.observe(document.getElementById('sentinel'));
+
+search.addEventListener('input', reset);
+catFilter.addEventListener('change', reset);
+
+reset();
+</script>
+</body>
+</html>
