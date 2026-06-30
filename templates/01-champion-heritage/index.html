@@ -1,253 +1,246 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Apex Sportswear — Champion's Heritage</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            navy: '#0A1628',
-            gold: '#C5993A',
-            'gold-light': '#D4AC5A',
-            warm: '#FAF7F2',
-            slate: '#3D4F5F',
-            cream: '#F0EBE3',
-          },
-          fontFamily: {
-            display: ['"Playfair Display"', 'serif'],
-            body: ['"Inter"', 'sans-serif'],
-            mono: ['"JetBrains Mono"', 'monospace'],
-          }
-        }
-      }
-    }
-  </script>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-  <style>
-    .gold-rule { height: 1px; background: linear-gradient(90deg, transparent, #C5993A 20%, #C5993A 80%, transparent); }
-    .gold-rule-thick { height: 2px; background: linear-gradient(90deg, transparent, #C5993A 10%, #D4AC5A 50%, #C5993A 90%, transparent); }
-    .hero-split { clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%); }
-    @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-    .fade-in { animation: fadeInUp 0.6s ease-out forwards; }
-    .fade-in-d1 { animation-delay: 0.1s; opacity: 0; }
-    .fade-in-d2 { animation-delay: 0.2s; opacity: 0; }
-    @media (prefers-reduced-motion: reduce) { .fade-in, .fade-in-d1, .fade-in-d2 { animation: none; opacity: 1; transform: none; } }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Apex Sportswear — Champion's Heritage</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config={theme:{extend:{colors:{p:'#0A1628','p-light':'#C5993A','p-dark':'#0A1628','bg-light':'#D4AC5A'},fontFamily:{display:['"Playfair Display"','serif'],body:['"Inter"','sans-serif'],mono:['"JetBrains Mono"','monospace']}}}}
+</script>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+.hero-bg{background:repeating-linear-gradient(45deg,#0A1628,#0A1628 10px,#C5993A15 10px,#C5993A15 20px)}
+.glass{background:#0A1628dd;backdrop-filter:blur(8px)}
+@keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+.anim{animation:fadeUp .5s ease-out forwards}
+.anim-d1{animation-delay:.1s;opacity:0}
+.anim-d2{animation-delay:.2s;opacity:0}
+@media(prefers-reduced-motion:reduce){.anim,.anim-d1,.anim-d2{animation:none;opacity:1;transform:none}}
+.accent-rule{height:2px;background:linear-gradient(90deg,transparent,#C5993A 20%,#C5993A 80%,transparent)}
+.prod-icon-football-kits{color:#C5993A}
+.prod-icon-cricket-wear{color:#C5993A}
+.prod-icon-boxing-gear{color:#C5993A}
+.prod-icon-mma-fightwear{color:#C5993A}
+.prod-icon-running-apparel{color:#C5993A}
+.prod-icon-gym-fitness{color:#C5993A}
+.prod-icon-basketball-uniforms{color:#C5993A}
+.prod-icon-martial-arts{color:#C5993A}
+.prod-icon-sports-accessories{color:#C5993A}
+.prod-icon-compression-wear{color:#C5993A}
+</style>
 </head>
-<body class="bg-warm font-body text-navy">
-  <header class="fixed top-0 w-full z-50 bg-navy/95 backdrop-blur-sm">
-    <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-      <a href="#" id="h-logo" class="h-8"></a>
-      <nav class="hidden md:flex items-center gap-8">
-        <a href="#about" class="text-cream/70 hover:text-gold text-sm tracking-wide uppercase transition-colors">About</a>
-        <a href="#products" class="text-cream/70 hover:text-gold text-sm tracking-wide uppercase transition-colors">Products</a>
-        <a href="#quality" class="text-cream/70 hover:text-gold text-sm tracking-wide uppercase transition-colors">Quality</a>
-        <a href="#export" class="text-cream/70 hover:text-gold text-sm tracking-wide uppercase transition-colors">Export</a>
-        <a href="#contact" class="bg-gold text-navy px-5 py-2 text-sm font-semibold tracking-wide uppercase hover:bg-gold-light transition-colors">Get Quote</a>
-      </nav>
-      <button id="mob-btn" class="md:hidden text-cream"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg></button>
-    </div>
-    <div id="mob-menu" class="hidden md:hidden bg-navy border-t border-gold/20 px-6 py-4">
-      <a href="#about" class="block py-2 text-cream/70 hover:text-gold text-sm uppercase">About</a>
-      <a href="#products" class="block py-2 text-cream/70 hover:text-gold text-sm uppercase">Products</a>
-      <a href="#quality" class="block py-2 text-cream/70 hover:text-gold text-sm uppercase">Quality</a>
-      <a href="#export" class="block py-2 text-cream/70 hover:text-gold text-sm uppercase">Export</a>
-      <a href="#contact" class="block mt-2 bg-gold text-navy px-5 py-2 text-sm font-semibold text-center uppercase">Get Quote</a>
-    </div>
-  </header>
+<body class="font-body" style="background:#D4AC5A;color:#0A1628">
 
-  <section class="relative bg-navy hero-split pt-24">
-    <div class="max-w-7xl mx-auto px-6 py-20 md:py-32 grid md:grid-cols-2 gap-12 items-center">
-      <div class="fade-in">
-        <p class="text-gold font-mono text-sm tracking-widest uppercase mb-4">Est. <span id="h-yr"></span> — Sialkot, Pakistan</p>
-        <h1 class="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-cream leading-tight mb-6" id="h-tag"></h1>
-        <p class="text-cream/60 text-lg leading-relaxed mb-8 max-w-lg" id="h-desc"></p>
-        <div class="flex flex-wrap gap-4">
-          <a href="#contact" class="bg-gold text-navy px-8 py-3 font-semibold tracking-wide uppercase text-sm hover:bg-gold-light transition-colors">Request a Quote</a>
-          <a href="#products" class="border border-gold/40 text-gold px-8 py-3 font-semibold tracking-wide uppercase text-sm hover:bg-gold/10 transition-colors">View Products</a>
-        </div>
-      </div>
-      <div class="fade-in fade-in-d2 relative">
-        <img id="h-img" src="" alt="Sportswear" class="w-full rounded shadow-2xl">
-        <div class="absolute -bottom-4 -left-4 bg-gold text-navy px-6 py-3 font-mono text-sm font-bold shadow-lg">
-          <span id="h-stat"></span><span class="block text-xs font-normal uppercase tracking-wide" id="h-stat-l"></span>
-        </div>
-      </div>
-    </div>
-  </section>
+<header class="fixed top-0 w-full z-50 glass">
+<div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+<a href="#" id="h-logo" class="font-display text-xl font-bold" style="color:#FFFFFF">APEX SPORT</a>
+<nav class="hidden md:flex items-center gap-8">
+<a href="#about" class="text-sm tracking-wide opacity-70 hover:opacity-100 transition-opacity" style="color:#FFFFFF">About</a>
+<a href="#products" class="text-sm tracking-wide opacity-70 hover:opacity-100 transition-opacity" style="color:#FFFFFF">Products</a>
+<a href="#process" class="text-sm tracking-wide opacity-70 hover:opacity-100 transition-opacity" style="color:#FFFFFF">Process</a>
+<a href="#export" class="text-sm tracking-wide opacity-70 hover:opacity-100 transition-opacity" style="color:#FFFFFF">Export</a>
+<a href="#contact" class="px-5 py-2 text-sm font-semibold rounded" style="background:#C5993A;color:#0A1628">Get Quote</a>
+</nav>
+<button id="mob-btn" class="md:hidden" style="color:#FFFFFF"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg></button>
+</div>
+<div id="mob-menu" class="hidden md:hidden px-6 py-4" style="background:#0A1628">
+<a href="#about" class="block py-2 text-sm opacity-70" style="color:#FFFFFF">About</a>
+<a href="#products" class="block py-2 text-sm opacity-70" style="color:#FFFFFF">Products</a>
+<a href="#process" class="block py-2 text-sm opacity-70" style="color:#FFFFFF">Process</a>
+<a href="#export" class="block py-2 text-sm opacity-70" style="color:#FFFFFF">Export</a>
+<a href="#contact" class="block mt-2 px-5 py-2 text-sm font-semibold text-center rounded" style="background:#C5993A;color:#0A1628">Get Quote</a>
+</div>
+</header>
 
-  <div class="gold-rule-thick"></div>
+<section class="hero-bg pt-28 pb-20 md:pt-36 md:pb-28">
+<div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
+<div class="anim">
+<p class="font-mono text-xs tracking-widest uppercase mb-4 opacity-60" style="color:#FFFFFF">Est. <span id="h-yr"></span> — Sialkot, Pakistan</p>
+<h1 class="font-display text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6" style="color:#FFFFFF" id="h-tag"></h1>
+<p class="text-lg leading-relaxed mb-8 max-w-lg opacity-70" style="color:#FFFFFF" id="h-desc"></p>
+<div class="flex flex-wrap gap-4">
+<a href="#contact" class="px-8 py-3 font-semibold text-sm tracking-wide rounded" style="background:#C5993A;color:#0A1628">Request a Quote</a>
+<a href="#products" class="px-8 py-3 font-semibold text-sm tracking-wide rounded border" style="border-color:#C5993A88;color:#C5993A">View Products</a>
+</div>
+</div>
+<div class="anim anim-d2 relative">
+<div class="rounded-lg p-8 flex items-center justify-center" style="background:#0A162822;border:1px solid #C5993A33;min-height:280px">
+<div class="text-center">
+<div class="w-24 h-24 mx-auto mb-4 rounded-full flex items-center justify-center" style="background:#C5993A22"><svg class="w-12 h-12" style="color:#C5993A" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg></div>
+<p class="font-display text-3xl font-bold" style="color:#FFFFFF">APEX</p>
+<p class="font-mono text-xs tracking-widest uppercase opacity-60" style="color:#FFFFFF">Sportswear Industries</p>
+</div>
+</div>
+<div class="absolute -bottom-4 -left-4 px-6 py-3 rounded font-mono text-sm font-bold" style="background:#C5993A;color:#0A1628">
+<span id="h-stat"></span><span class="block text-xs font-normal uppercase tracking-wide opacity-70" id="h-stat-l"></span>
+</div>
+</div>
+</div>
+</section>
 
-  <section class="bg-cream py-12">
-    <div class="max-w-7xl mx-auto px-6 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8" id="stats"></div>
-  </section>
+<div class="accent-rule"></div>
 
-  <div class="gold-rule"></div>
+<section class="py-12" style="background:#0A1628">
+<div class="max-w-7xl mx-auto px-6 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8" id="stats"></div>
+</section>
 
-  <section id="about" class="py-20 bg-warm">
-    <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-16 items-center">
-      <div>
-        <p class="text-gold font-mono text-sm tracking-widest uppercase mb-3">Our Story</p>
-        <h2 class="font-display text-3xl md:text-4xl font-bold text-navy mb-6">Manufacturing Excellence Since <span id="a-yr"></span></h2>
-        <p class="text-slate leading-relaxed mb-6" id="a-desc"></p>
-        <div class="grid grid-cols-2 gap-6" id="a-cards"></div>
-      </div>
-      <div class="relative">
-        <div class="absolute inset-0 bg-gold/10 transform rotate-3 rounded"></div>
-        <img id="a-img" src="" alt="Factory" class="relative w-full rounded shadow-lg">
-      </div>
-    </div>
-  </section>
+<section id="about" class="py-20">
+<div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-16 items-center">
+<div>
+<p class="font-mono text-xs tracking-widest uppercase mb-3 opacity-60" style="color:#C5993A">Our Story</p>
+<h2 class="font-display text-3xl md:text-4xl font-bold mb-6">Manufacturing Excellence Since <span id="a-yr"></span></h2>
+<p class="leading-relaxed mb-6 opacity-70" id="a-desc"></p>
+<div class="grid grid-cols-2 gap-4" id="a-cards"></div>
+</div>
+<div class="rounded-lg p-8 flex items-center justify-center" style="background:#C5993A11;border:1px solid #C5993A22;min-height:240px">
+<div class="text-center"><div class="w-16 h-16 mx-auto mb-3 rounded-full flex items-center justify-center" style="background:#C5993A22"><svg class="w-8 h-8" style="color:#C5993A" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg></div><p class="font-display text-lg font-bold">45,000 sq ft</p><p class="text-xs opacity-60 uppercase tracking-wide">Factory Floor</p></div>
+</div>
+</div>
+</section>
 
-  <div class="gold-rule"></div>
+<section class="py-20" style="background:#0A162811">
+<div class="max-w-7xl mx-auto px-6">
+<p class="font-mono text-xs tracking-widest uppercase mb-3 text-center opacity-60" style="color:#C5993A">What We Do</p>
+<h2 class="font-display text-3xl md:text-4xl font-bold text-center mb-4">Manufacturing Capabilities</h2>
+<p class="text-center max-w-2xl mx-auto mb-12 opacity-70" id="cap-desc"></p>
+<div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4" id="svc-grid"></div>
+<div class="mt-12 grid md:grid-cols-3 gap-6 p-8 rounded-lg" style="background:#0A1628" id="cap-high"></div>
+</div>
+</section>
 
-  <section class="py-20 bg-cream">
-    <div class="max-w-7xl mx-auto px-6">
-      <p class="text-gold font-mono text-sm tracking-widest uppercase mb-3 text-center">What We Do</p>
-      <h2 class="font-display text-3xl md:text-4xl font-bold text-navy text-center mb-4">Manufacturing Capabilities</h2>
-      <p class="text-slate text-center max-w-2xl mx-auto mb-12" id="cap-desc"></p>
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6" id="svc-grid"></div>
-      <div class="mt-12 grid md:grid-cols-3 gap-8 bg-navy rounded p-8" id="cap-high"></div>
-    </div>
-  </section>
+<section id="products" class="py-20">
+<div class="max-w-7xl mx-auto px-6">
+<p class="font-mono text-xs tracking-widest uppercase mb-3 text-center opacity-60" style="color:#C5993A">Product Range</p>
+<h2 class="font-display text-3xl md:text-4xl font-bold text-center mb-12">Engineered Sportswear</h2>
+<div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6" id="p-grid"></div>
+</div>
+</section>
 
-  <div class="gold-rule-thick"></div>
+<section id="process" class="py-20" style="background:#0A162811">
+<div class="max-w-7xl mx-auto px-6">
+<p class="font-mono text-xs tracking-widest uppercase mb-3 text-center opacity-60" style="color:#C5993A">How We Work</p>
+<h2 class="font-display text-3xl md:text-4xl font-bold text-center mb-12">Manufacturing Process</h2>
+<div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4" id="process-grid"></div>
+</div>
+</section>
 
-  <section id="products" class="py-20 bg-warm">
-    <div class="max-w-7xl mx-auto px-6">
-      <p class="text-gold font-mono text-sm tracking-widest uppercase mb-3 text-center">Product Range</p>
-      <h2 class="font-display text-3xl md:text-4xl font-bold text-navy text-center mb-12">Engineered Sportswear</h2>
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8" id="p-grid"></div>
-    </div>
-  </section>
+<section id="certs" class="py-20" style="background:#0A1628">
+<div class="max-w-7xl mx-auto px-6 text-center">
+<p class="font-mono text-xs tracking-widest uppercase mb-3 opacity-60" style="color:#C5993A">Quality Assurance</p>
+<h2 class="font-display text-3xl md:text-4xl font-bold mb-12" style="color:#FFFFFF">Internationally Certified</h2>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4" id="certs-grid"></div>
+</div>
+</section>
 
-  <div class="gold-rule"></div>
+<section id="export" class="py-20">
+<div class="max-w-7xl mx-auto px-6">
+<p class="font-mono text-xs tracking-widest uppercase mb-3 text-center opacity-60" style="color:#C5993A">Global Reach</p>
+<h2 class="font-display text-3xl md:text-4xl font-bold text-center mb-12">Export Markets</h2>
+<div class="grid md:grid-cols-2 gap-8" id="export-grid"></div>
+</div>
+</section>
 
-  <section id="quality" class="py-20 bg-navy">
-    <div class="max-w-7xl mx-auto px-6 text-center">
-      <p class="text-gold font-mono text-sm tracking-widest uppercase mb-3">Quality Assurance</p>
-      <h2 class="font-display text-3xl md:text-4xl font-bold text-cream mb-12">Internationally Certified</h2>
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-6" id="certs"></div>
-    </div>
-  </section>
+<section class="py-20" style="background:#0A162811">
+<div class="max-w-7xl mx-auto px-6 text-center">
+<p class="font-mono text-xs tracking-widest uppercase mb-3 opacity-60" style="color:#C5993A">Who We Serve</p>
+<h2 class="font-display text-3xl md:text-4xl font-bold mb-12">Industries</h2>
+<div class="flex flex-wrap justify-center gap-3" id="industries"></div>
+</div>
+</section>
 
-  <div class="gold-rule-thick"></div>
+<section class="py-20" style="background:#0A1628">
+<div class="max-w-7xl mx-auto px-6">
+<p class="font-mono text-xs tracking-widest uppercase mb-3 text-center opacity-60" style="color:#C5993A">Client Trust</p>
+<h2 class="font-display text-3xl md:text-4xl font-bold text-center mb-12" style="color:#FFFFFF">What Our Partners Say</h2>
+<div class="grid md:grid-cols-3 gap-6" id="testis"></div>
+</div>
+</section>
 
-  <section id="export" class="py-20 bg-cream">
-    <div class="max-w-7xl mx-auto px-6">
-      <p class="text-gold font-mono text-sm tracking-widest uppercase mb-3 text-center">Global Reach</p>
-      <h2 class="font-display text-3xl md:text-4xl font-bold text-navy text-center mb-12">Export Markets</h2>
-      <div class="grid md:grid-cols-2 gap-12">
-        <div><h3 class="font-display text-xl font-bold text-navy mb-4">Countries We Serve</h3><div class="flex flex-wrap gap-2" id="countries"></div></div>
-        <div><h3 class="font-display text-xl font-bold text-navy mb-4">Trade Terms</h3><div class="space-y-4" id="trade"></div></div>
-      </div>
-    </div>
-  </section>
+<section id="contact" class="py-20">
+<div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-16">
+<div>
+<p class="font-mono text-xs tracking-widest uppercase mb-3 opacity-60" style="color:#C5993A">Get In Touch</p>
+<h2 class="font-display text-3xl md:text-4xl font-bold mb-6">Start Your Order</h2>
+<p class="opacity-70 mb-8">Ready to manufacture custom sportswear? Contact us for a quote, sample, or factory tour.</p>
+<div class="space-y-3" id="c-info"></div>
+</div>
+<div class="p-8 rounded-lg" style="background:#0A1628">
+<h3 class="font-display text-xl font-bold mb-6" style="color:#FFFFFF">Request a Quote</h3>
+<form class="space-y-4">
+<input type="text" placeholder="Your Name" class="w-full px-4 py-3 rounded text-sm border focus:outline-none" style="background:#0A162855;border-color:#C5993A44;color:#FFFFFF" required>
+<input type="email" placeholder="Email Address" class="w-full px-4 py-3 rounded text-sm border focus:outline-none" style="background:#0A162855;border-color:#C5993A44;color:#FFFFFF" required>
+<input type="text" placeholder="Company Name" class="w-full px-4 py-3 rounded text-sm border focus:outline-none" style="background:#0A162855;border-color:#C5993A44;color:#FFFFFF">
+<select class="w-full px-4 py-3 rounded text-sm border focus:outline-none" style="background:#0A162855;border-color:#C5993A44;color:#FFFFFF88">
+<option value="">Select Product Category</option>
+<option>Football Kits</option><option>Cricket Apparel</option><option>Boxing Equipment</option>
+<option>MMA & Fightwear</option><option>Running Apparel</option><option>Gym & Fitness Wear</option>
+<option>Basketball Uniforms</option><option>Martial Arts Uniforms</option><option>Sports Accessories</option>
+<option>Compression Wear</option>
+</select>
+<textarea placeholder="Tell us about your requirements..." rows="4" class="w-full px-4 py-3 rounded text-sm border focus:outline-none resize-none" style="background:#0A162855;border-color:#C5993A44;color:#FFFFFF"></textarea>
+<button type="submit" class="w-full py-3 font-semibold text-sm tracking-wide rounded" style="background:#C5993A;color:#0A1628">Send Inquiry</button>
+</form>
+</div>
+</div>
+</section>
 
-  <section class="py-20 bg-warm">
-    <div class="max-w-7xl mx-auto px-6 text-center">
-      <p class="text-gold font-mono text-sm tracking-widest uppercase mb-3">Who We Serve</p>
-      <h2 class="font-display text-3xl md:text-4xl font-bold text-navy mb-12">Industries</h2>
-      <div class="flex flex-wrap justify-center gap-3" id="industries"></div>
-    </div>
-  </section>
+<footer class="py-12" style="background:#0A1628">
+<div class="max-w-7xl mx-auto px-6">
+<div class="grid md:grid-cols-4 gap-8 mb-8">
+<div><p class="font-display text-xl font-bold mb-3" style="color:#FFFFFF">APEX SPORT</p><p class="text-sm opacity-50 leading-relaxed" style="color:#FFFFFF">Premium sportswear manufacturer from Sialkot, Pakistan. Serving global brands since <span id="f-yr"></span>.</p></div>
+<div><h4 class="font-semibold text-sm uppercase tracking-wide mb-4" style="color:#C5993A">Products</h4><ul class="space-y-2 text-sm opacity-50" style="color:#FFFFFF" id="f-prods"></ul></div>
+<div><h4 class="font-semibold text-sm uppercase tracking-wide mb-4" style="color:#C5993A">Company</h4><ul class="space-y-2 text-sm opacity-50" style="color:#FFFFFF"><li><a href="#about" class="hover:opacity-100 transition-opacity">About Us</a></li><li><a href="#certs" class="hover:opacity-100 transition-opacity">Certifications</a></li><li><a href="#export" class="hover:opacity-100 transition-opacity">Export Markets</a></li><li><a href="#contact" class="hover:opacity-100 transition-opacity">Contact</a></li></ul></div>
+<div><h4 class="font-semibold text-sm uppercase tracking-wide mb-4" style="color:#C5993A">Contact</h4><ul class="space-y-2 text-sm opacity-50" style="color:#FFFFFF" id="f-contact"></ul></div>
+</div>
+<div class="pt-6 flex flex-col md:flex-row justify-between items-center gap-4" style="border-top:1px solid #C5993A22">
+<p class="text-xs opacity-40" style="color:#FFFFFF">&copy; <span id="f-copy"></span> Apex Sportswear Industries. All rights reserved.</p>
+<div class="flex gap-4" id="f-social"></div>
+</div>
+</div>
+</footer>
 
-  <div class="gold-rule-thick"></div>
+<script>
+const PROCESS_STEPS = [
+  {icon:'<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/></svg>',name:'Fabric Sourcing'},
+  {icon:'<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M14.121 14.121L19 19m-7-7l7-7m-7 7l-2.879 2.879M12 12L4.939 4.939m7.061 7.061l-2.879-2.879M12 12l2.879-2.879"/></svg>',name:'Pattern & Cutting'},
+  {icon:'<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"/></svg>',name:'Sewing & Assembly'},
+  {icon:'<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>',name:'Print & Embroidery'},
+  {icon:'<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>',name:'Quality Control'},
+  {icon:'<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/></svg>',name:'Packaging & Export'}
+];
 
-  <section class="py-20 bg-navy">
-    <div class="max-w-7xl mx-auto px-6">
-      <p class="text-gold font-mono text-sm tracking-widest uppercase mb-3 text-center">Client Trust</p>
-      <h2 class="font-display text-3xl md:text-4xl font-bold text-cream text-center mb-12">What Our Partners Say</h2>
-      <div class="grid md:grid-cols-3 gap-8" id="testis"></div>
-    </div>
-  </section>
-
-  <div class="gold-rule-thick"></div>
-
-  <section id="contact" class="py-20 bg-cream">
-    <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-16">
-      <div>
-        <p class="text-gold font-mono text-sm tracking-widest uppercase mb-3">Get In Touch</p>
-        <h2 class="font-display text-3xl md:text-4xl font-bold text-navy mb-6">Start Your Order</h2>
-        <p class="text-slate mb-8">Ready to manufacture custom sportswear? Contact us for a quote, sample, or factory tour.</p>
-        <div class="space-y-4" id="c-info"></div>
-      </div>
-      <div class="bg-navy rounded p-8">
-        <h3 class="font-display text-xl font-bold text-cream mb-6">Request a Quote</h3>
-        <form class="space-y-4">
-          <input type="text" placeholder="Your Name" class="w-full bg-navy/50 border border-gold/30 text-cream px-4 py-3 rounded text-sm focus:outline-none focus:border-gold" required>
-          <input type="email" placeholder="Email Address" class="w-full bg-navy/50 border border-gold/30 text-cream px-4 py-3 rounded text-sm focus:outline-none focus:border-gold" required>
-          <input type="text" placeholder="Company Name" class="w-full bg-navy/50 border border-gold/30 text-cream px-4 py-3 rounded text-sm focus:outline-none focus:border-gold">
-          <select class="w-full bg-navy/50 border border-gold/30 text-cream/70 px-4 py-3 rounded text-sm focus:outline-none focus:border-gold">
-            <option value="">Select Product Category</option>
-            <option>Football Kits</option><option>Cricket Apparel</option><option>Boxing Equipment</option>
-            <option>MMA & Fightwear</option><option>Running Apparel</option><option>Gym & Fitness Wear</option>
-            <option>Basketball Uniforms</option><option>Martial Arts Uniforms</option><option>Sports Accessories</option>
-            <option>Compression Wear</option>
-          </select>
-          <textarea placeholder="Tell us about your requirements..." rows="4" class="w-full bg-navy/50 border border-gold/30 text-cream px-4 py-3 rounded text-sm focus:outline-none focus:border-gold resize-none"></textarea>
-          <button type="submit" class="w-full bg-gold text-navy py-3 font-semibold tracking-wide uppercase text-sm hover:bg-gold-light transition-colors">Send Inquiry</button>
-        </form>
-      </div>
-    </div>
-  </section>
-
-  <footer class="bg-navy py-12">
-    <div class="max-w-7xl mx-auto px-6">
-      <div class="gold-rule mb-8"></div>
-      <div class="grid md:grid-cols-4 gap-8 mb-8">
-        <div><div id="f-logo" class="h-8 mb-4"></div><p class="text-cream/50 text-sm leading-relaxed">Premium sportswear manufacturer from Sialkot, Pakistan. Serving global brands since <span id="f-yr"></span>.</p></div>
-        <div><h4 class="text-gold font-semibold text-sm uppercase tracking-wide mb-4">Products</h4><ul class="space-y-2 text-cream/50 text-sm" id="f-prods"></ul></div>
-        <div><h4 class="text-gold font-semibold text-sm uppercase tracking-wide mb-4">Company</h4><ul class="space-y-2 text-cream/50 text-sm"><li><a href="#about" class="hover:text-gold transition-colors">About Us</a></li><li><a href="#quality" class="hover:text-gold transition-colors">Certifications</a></li><li><a href="#export" class="hover:text-gold transition-colors">Export Markets</a></li><li><a href="#contact" class="hover:text-gold transition-colors">Contact</a></li></ul></div>
-        <div><h4 class="text-gold font-semibold text-sm uppercase tracking-wide mb-4">Contact</h4><ul class="space-y-2 text-cream/50 text-sm" id="f-contact"></ul></div>
-      </div>
-      <div class="gold-rule mb-6"></div>
-      <div class="flex flex-col md:flex-row justify-between items-center gap-4">
-        <p class="text-cream/40 text-xs">&copy; <span id="f-copy"></span> <span id="f-name"></span>. All rights reserved.</p>
-        <div class="flex gap-4" id="f-social"></div>
-      </div>
-    </div>
-  </footer>
-
-  <script>
-    fetch('../../data/content.json').then(r=>r.json()).then(d=>{
-      const c=d.company, cap=d.capabilities, exp=d.exportInfo;
-      document.querySelector('#h-logo').innerHTML=`<img src="${c.logo}" alt="${c.name}" class="h-8">`;
-      document.querySelector('#h-yr').textContent=c.founded;
-      document.querySelector('#h-tag').textContent=c.tagline;
-      document.querySelector('#h-desc').textContent=c.description;
-      document.querySelector('#h-img').src=c.coverImage;
-      document.querySelector('#h-stat').textContent=d.stats[0].value;
-      document.querySelector('#h-stat-l').textContent=d.stats[0].label;
-      document.querySelector('#stats').innerHTML=d.stats.map(s=>`<div class="text-center"><div class="font-mono text-2xl md:text-3xl font-bold text-navy">${s.value}</div><div class="text-slate text-xs uppercase tracking-wide mt-1">${s.label}</div></div>`).join('');
-      document.querySelector('#a-yr').textContent=c.founded;
-      document.querySelector('#a-desc').textContent=c.description;
-      document.querySelector('#a-img').src=c.coverImage;
-      document.querySelector('#a-cards').innerHTML=[{v:c.employees,l:'Workers'},{v:c.factorySize,l:'Factory'},{v:c.annualOutput,l:'Output'},{v:cap.leadTime.split(' ')[0]+'-'+cap.leadTime.split(' ')[1],l:'Weeks'}].map(x=>`<div class="bg-cream p-4 rounded"><span class="font-mono text-gold text-lg font-bold">${x.v}</span><span class="block text-slate text-xs uppercase tracking-wide mt-1">${x.l}</span></div>`).join('');
-      document.querySelector('#cap-desc').textContent=cap.description;
-      document.querySelector('#svc-grid').innerHTML=cap.services.map(s=>`<div class="bg-warm border border-gold/20 p-5 rounded hover:border-gold/50 transition-colors"><div class="flex items-center gap-3"><div class="w-2 h-2 bg-gold rounded-full flex-shrink-0"></div><span class="text-navy font-medium text-sm">${s}</span></div></div>`).join('');
-      document.querySelector('#cap-high').innerHTML=`<div class="text-center"><span class="font-mono text-gold text-2xl font-bold block">${cap.capacity.split(' ')[0]}</span><span class="text-cream/60 text-xs uppercase tracking-wide">${cap.capacity.split(' ').slice(1).join(' ')}</span></div><div class="text-center"><span class="font-mono text-gold text-2xl font-bold block">${cap.leadTime.split(' ')[0]}</span><span class="text-cream/60 text-xs uppercase tracking-wide">${cap.leadTime.split(' ').slice(1).join(' ')}</span></div><div class="text-center"><span class="font-mono text-gold text-2xl font-bold block">${cap.moq.split(' ')[0]}</span><span class="text-cream/60 text-xs uppercase tracking-wide">${cap.moq.split(' ').slice(1).join(' ')}</span></div>`;
-      document.querySelector('#p-grid').innerHTML=d.products.map(p=>`<div class="bg-white rounded shadow-md overflow-hidden hover:shadow-xl transition-shadow group"><div class="overflow-hidden"><img src="${p.image}" alt="${p.name}" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-500"></div><div class="p-6"><p class="text-gold text-xs font-mono uppercase tracking-wide mb-1">${p.category}</p><h3 class="font-display text-xl font-bold text-navy mb-2">${p.name}</h3><p class="text-slate text-sm leading-relaxed mb-4">${p.description}</p><div class="flex flex-wrap gap-1 mb-4">${p.features.slice(0,3).map(f=>`<span class="bg-cream text-slate text-xs px-2 py-1 rounded">${f}</span>`).join('')}</div><a href="#contact" class="text-gold text-sm font-semibold uppercase tracking-wide hover:text-gold-light transition-colors">Request Sample →</a></div></div>`).join('');
-      document.querySelector('#certs').innerHTML=d.certifications.map(x=>`<div class="bg-navy/50 border border-gold/20 p-6 rounded text-center hover:border-gold/50 transition-colors"><span class="text-3xl block mb-3">${x.icon}</span><h4 class="text-cream font-semibold text-sm mb-1">${x.name}</h4><p class="text-cream/50 text-xs">${x.description}</p></div>`).join('');
-      document.querySelector('#countries').innerHTML=exp.countries.map(c=>`<span class="bg-warm border border-gold/20 text-navy text-sm px-3 py-1.5 rounded">${c}</span>`).join('');
-      document.querySelector('#trade').innerHTML=`<div class="bg-warm border border-gold/20 p-4 rounded"><span class="text-gold font-mono text-xs uppercase tracking-wide block mb-1">Shipping</span><span class="text-navy text-sm">${exp.shippingTerms.join(' · ')}</span></div><div class="bg-warm border border-gold/20 p-4 rounded"><span class="text-gold font-mono text-xs uppercase tracking-wide block mb-1">Payment</span><span class="text-navy text-sm">${exp.paymentTerms.join(' · ')}</span></div>`;
-      document.querySelector('#industries').innerHTML=d.industriesServed.map(i=>`<span class="bg-navy text-gold text-sm px-4 py-2 rounded font-medium">${i}</span>`).join('');
-      document.querySelector('#testis').innerHTML=d.testimonials.map(t=>`<div class="bg-navy/50 border border-gold/20 p-8 rounded"><p class="text-cream/80 text-sm leading-relaxed mb-6 italic">"${t.quote}"</p><div class="flex items-center gap-3"><img src="${t.avatar}" alt="${t.author}" class="w-10 h-10 rounded-full object-cover"><div><span class="text-cream text-sm font-semibold block">${t.author}</span><span class="text-gold text-xs">${t.company} — ${t.country}</span></div></div></div>`).join('');
-      document.querySelector('#c-info').innerHTML=`<div class="flex items-start gap-3"><span class="text-gold mt-1">📍</span><span class="text-navy text-sm">${d.contact.address}</span></div><div class="flex items-start gap-3"><span class="text-gold mt-1">📞</span><span class="text-navy text-sm">${d.contact.phone}</span></div><div class="flex items-start gap-3"><span class="text-gold mt-1">💬</span><span class="text-navy text-sm">${d.contact.whatsapp}</span></div><div class="flex items-start gap-3"><span class="text-gold mt-1">✉️</span><span class="text-navy text-sm">${d.contact.email}</span></div>`;
-      document.querySelector('#f-logo').innerHTML=`<img src="${c.logo}" alt="${c.name}" class="h-8">`;
-      document.querySelector('#f-yr').textContent=c.founded;
-      document.querySelector('#f-prods').innerHTML=d.products.slice(0,6).map(p=>`<li><a href="#products" class="hover:text-gold transition-colors">${p.name}</a></li>`).join('');
-      document.querySelector('#f-contact').innerHTML=`<li>${d.contact.address}</li><li>${d.contact.phone}</li><li>${d.contact.email}</li>`;
-      document.querySelector('#f-copy').textContent=new Date().getFullYear();
-      document.querySelector('#f-name').textContent=c.name;
-      document.querySelector('#f-social').innerHTML=Object.entries(d.contact.social).map(([k,v])=>`<a href="https://${v}" target="_blank" class="text-cream/40 hover:text-gold text-xs uppercase tracking-wide transition-colors">${k}</a>`).join('');
-    });
-    document.querySelector('#mob-btn').addEventListener('click',()=>document.querySelector('#mob-menu').classList.toggle('hidden'));
-    document.querySelectorAll('a[href^="#"]').forEach(a=>a.addEventListener('click',e=>{e.preventDefault();const t=document.querySelector(a.getAttribute('href'));if(t){t.scrollIntoView({behavior:'smooth'});document.querySelector('#mob-menu').classList.add('hidden');}}));
-  </script>
+fetch('../../data/content.json').then(r=>r.json()).then(d=>{
+  const c=d.company,cap=d.capabilities,exp=d.exportInfo;
+  document.querySelector('#h-yr').textContent=c.founded;
+  document.querySelector('#h-tag').textContent=c.tagline;
+  document.querySelector('#h-desc').textContent=c.description;
+  document.querySelector('#h-stat').textContent=d.stats[0].value;
+  document.querySelector('#h-stat-l').textContent=d.stats[0].label;
+  document.querySelector('#stats').innerHTML=d.stats.map(s=>'<div class="text-center"><div class="font-mono text-2xl md:text-3xl font-bold" style="color:#FFFFFF">'+s.value+'</div><div class="text-xs uppercase tracking-wide mt-1 opacity-50" style="color:#FFFFFF">'+s.label+'</div></div>').join('');
+  document.querySelector('#a-yr').textContent=c.founded;
+  document.querySelector('#a-desc').textContent=c.description;
+  document.querySelector('#a-cards').innerHTML=[{v:c.employees,l:'Workers'},{v:c.factorySize,l:'Factory'},{v:c.annualOutput,l:'Output'},{v:'2-4',l:'Weeks Lead'}].map(x=>'<div class="p-4 rounded" style="background:#C5993A11"><span class="font-mono text-lg font-bold" style="color:#C5993A">'+x.v+'</span><span class="block text-xs uppercase tracking-wide mt-1 opacity-60">'+x.l+'</span></div>').join('');
+  document.querySelector('#cap-desc').textContent=cap.description;
+  document.querySelector('#svc-grid').innerHTML=cap.services.map(s=>'<div class="p-4 rounded flex items-center gap-3" style="background:#D4AC5A"><div class="w-2 h-2 rounded-full flex-shrink-0" style="background:#C5993A"></div><span class="font-medium text-sm">'+s+'</span></div>').join('');
+  document.querySelector('#cap-high').innerHTML='<div class="text-center"><span class="font-mono text-2xl font-bold block" style="color:#C5993A">'+cap.capacity.split(' ')[0]+'</span><span class="text-xs uppercase tracking-wide opacity-50" style="color:#FFFFFF">'+cap.capacity.split(' ').slice(1).join(' ')+'</span></div><div class="text-center"><span class="font-mono text-2xl font-bold block" style="color:#C5993A">'+cap.leadTime.split(' ')[0]+'</span><span class="text-xs uppercase tracking-wide opacity-50" style="color:#FFFFFF">'+cap.leadTime.split(' ').slice(1).join(' ')+'</span></div><div class="text-center"><span class="font-mono text-2xl font-bold block" style="color:#C5993A">'+cap.moq.split(' ')[0]+'</span><span class="text-xs uppercase tracking-wide opacity-50" style="color:#FFFFFF">'+cap.moq.split(' ').slice(1).join(' ')+'</span></div>';
+  document.querySelector('#p-grid').innerHTML=d.products.map(p=>{
+    const icon=PRODUCT_ICONS[p.id]||'';
+    return '<div class="rounded-lg overflow-hidden hover:shadow-lg transition-shadow group" style="background:#D4AC5A"><div class="p-6 flex items-center justify-center" style="background:linear-gradient(135deg,'+({'football-kits':'#1B4332,#2D6A4F','cricket-wear':'#0A1F44,#1E3A5F','boxing-gear':'#8B0000,#B71C1C','mma-fightwear':'#2C2C2C,#4A4A4A','running-apparel':'#1A535C,#2D8B7A','gym-fitness':'#0D0D0D,#1A3A1A','basketball-uniforms':'#0066FF,#3388FF','martial-arts':'#334155,#475569','sports-accessories':'#2C3539,#3D5A6E','compression-wear':'#1C1C1C,#3A1A1A'}[p.id]||'#333,#555').split(',')[0]+','+({'football-kits':'#1B4332,#2D6A4F','cricket-wear':'#0A1F44,#1E3A5F','boxing-gear':'#8B0000,#B71C1C','mma-fightwear':'#2C2C2C,#4A4A4A','running-apparel':'#1A535C,#2D8B7A','gym-fitness':'#0D0D0D,#1A3A1A','basketball-uniforms':'#0066FF,#3388FF','martial-arts':'#334155,#475569','sports-accessories':'#2C3539,#3D5A6E','compression-wear':'#1C1C1C,#3A1A1A'}[p.id]||'#333,#555').split(',')[1]+');min-height:140px;color:#fff">'+icon+'</div><div class="p-5"><p class="text-xs font-mono uppercase tracking-wide mb-1" style="color:#C5993A">'+p.category+'</p><h3 class="font-display text-lg font-bold mb-2">'+p.name+'</h3><p class="text-sm leading-relaxed mb-3 opacity-70">'+p.description+'</p><div class="flex flex-wrap gap-1 mb-3">'+p.features.slice(0,3).map(f=>'<span class="text-xs px-2 py-1 rounded" style="background:#C5993A15">'+f+'</span>').join('')+'</div><p class="text-xs opacity-50 mb-3">MOQ: '+p.specs.moq+' · '+p.specs.material.split(',')[0]+'</p><a href="#contact" class="text-sm font-semibold hover:opacity-80 transition-opacity" style="color:#C5993A">Request Sample →</a></div></div>';
+  }).join('');
+  document.querySelector('#process-grid').innerHTML=PROCESS_STEPS.map((s,i)=>'<div class="p-4 rounded text-center" style="background:#D4AC5A"><div class="w-10 h-10 mx-auto mb-2 rounded-full flex items-center justify-center" style="background:#C5993A22;color:#C5993A">'+s.icon+'</div><p class="font-mono text-xs mb-1" style="color:#C5993A">'+(i+1).toString().padStart(2,'0')+'</p><p class="text-sm font-medium">'+s.name+'</p></div>').join('');
+  document.querySelector('#certs-grid').innerHTML=d.certifications.map(x=>'<div class="p-5 rounded text-center" style="background:#0A162822;border:1px solid #C5993A22"><span class="text-2xl block mb-2">'+x.icon+'</span><h4 class="font-semibold text-sm mb-1">'+x.name+'</h4><p class="text-xs opacity-50">'+x.description+'</p></div>').join('');
+  document.querySelector('#export-grid').innerHTML='<div><h3 class="font-display text-xl font-bold mb-4">Countries We Serve</h3><div class="flex flex-wrap gap-2 mb-8">'+exp.countries.map(c=>'<span class="text-sm px-3 py-1.5 rounded" style="background:#C5993A11">'+c+'</span>').join('')+'</div><h3 class="font-display text-xl font-bold mb-4">Industries</h3><div class="flex flex-wrap gap-2">'+d.industriesServed.map(i=>'<span class="text-sm px-3 py-1.5 rounded" style="background:#0A1628;color:#FFFFFF">'+i+'</span>').join('')+'</div></div><div><h3 class="font-display text-xl font-bold mb-4">Trade Terms</h3><div class="space-y-3"><div class="p-4 rounded" style="background:#D4AC5A"><span class="font-mono text-xs uppercase tracking-wide block mb-1" style="color:#C5993A">Shipping</span><span class="text-sm">'+exp.shippingTerms.join(' · ')+'</span></div><div class="p-4 rounded" style="background:#D4AC5A"><span class="font-mono text-xs uppercase tracking-wide block mb-1" style="color:#C5993A">Payment</span><span class="text-sm">'+exp.paymentTerms.join(' · ')+'</span></div><div class="p-4 rounded" style="background:#D4AC5A"><span class="font-mono text-xs uppercase tracking-wide block mb-1" style="color:#C5993A">Special Conditions</span><span class="text-sm">'+exp.specialConditions.join(' · ')+'</span></div></div></div>';
+  document.querySelector('#testis').innerHTML=d.testimonials.map(t=>'<div class="p-6 rounded" style="background:#0A162822;border:1px solid #C5993A22"><p class="text-sm leading-relaxed mb-4 italic opacity-80">"'+t.quote+'"</p><div class="flex items-center gap-3"><div class="w-9 h-9 rounded-full flex items-center justify-center font-bold text-xs" style="background:#C5993A22;color:#C5993A">'+t.author.split(' ').map(n=>n[0]).join('')+'</div><div><span class="text-sm font-semibold block">'+t.author+'</span><span class="text-xs" style="color:#C5993A">'+t.company+' — '+t.country+'</span></div></div></div>').join('');
+  document.querySelector('#c-info').innerHTML='<div class="flex items-start gap-3"><span style="color:#C5993A">📍</span><span class="text-sm">'+d.contact.address+'</span></div><div class="flex items-start gap-3"><span style="color:#C5993A">📞</span><span class="text-sm">'+d.contact.phone+'</span></div><div class="flex items-start gap-3"><span style="color:#C5993A">💬</span><span class="text-sm">'+d.contact.whatsapp+'</span></div><div class="flex items-start gap-3"><span style="color:#C5993A">✉️</span><span class="text-sm">'+d.contact.email+'</span></div>';
+  document.querySelector('#f-yr').textContent=c.founded;
+  document.querySelector('#f-prods').innerHTML=d.products.slice(0,6).map(p=>'<li><a href="#products" class="hover:opacity-100 transition-opacity">'+p.name+'</a></li>').join('');
+  document.querySelector('#f-contact').innerHTML='<li>'+d.contact.address+'</li><li>'+d.contact.phone+'</li><li>'+d.contact.email+'</li>';
+  document.querySelector('#f-copy').textContent=new Date().getFullYear();
+  document.querySelector('#f-social').innerHTML=Object.entries(d.contact.social).map(([k,v])=>'<a href="https://'+v+'" target="_blank" class="text-xs uppercase tracking-wide opacity-40 hover:opacity-100 transition-opacity" style="color:#FFFFFF">'+k+'</a>').join('');
+});
+document.querySelector('#mob-btn').addEventListener('click',()=>document.querySelector('#mob-menu').classList.toggle('hidden'));
+document.querySelectorAll('a[href^="#"]').forEach(a=>a.addEventListener('click',e=>{e.preventDefault();const t=document.querySelector(a.getAttribute('href'));if(t){t.scrollIntoView({behavior:'smooth'});document.querySelector('#mob-menu').classList.add('hidden');}}));
+</script>
 </body>
 </html>

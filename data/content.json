@@ -7,240 +7,66 @@
     "location": "Sialkot, Punjab, Pakistan",
     "employees": "250+",
     "factorySize": "45,000 sq ft",
-    "annualOutput": "1.5M+ pieces/year",
-    "logo": "https://placehold.co/200x60/0F172A/FFFFFF?text=APEX+SPORT",
-    "coverImage": "https://placehold.co/1400x600/0F172A/C5993A?text=SPORTSWEAR+MANUFACTURING"
+    "annualOutput": "1.5M+ pieces/year"
   },
   "capabilities": {
     "description": "Vertically integrated manufacturing from fabric sourcing to finished product, with in-house sublimation, embroidery, cut-and-sew, and quality assurance. Our facility houses modern German and Japanese machinery operated by skilled craftsmen with decades of experience.",
-    "services": [
-      "OEM Manufacturing",
-      "ODM Development",
-      "Private Label",
-      "Sublimation Printing",
-      "Screen Printing",
-      "Embroidery",
-      "Cut & Sew",
-      "Fabric Sourcing",
-      "Tech Pack Development",
-      "Sampling & Prototyping"
-    ],
-    "machinery": [
-      "Sublimation Heat Press Systems",
-      "Multi-needle Embroidery Machines",
-      "Automated Gerber Cutting",
-      "Juki Industrial Sewing",
-      "Fabric Inspection Machines",
-      "Ultrasonic Welding",
-      "Laser Cutting Systems"
-    ],
+    "services": ["OEM Manufacturing", "ODM Development", "Private Label", "Sublimation Printing", "Screen Printing", "Embroidery", "Cut & Sew", "Fabric Sourcing", "Tech Pack Development", "Sampling & Prototyping"],
+    "machinery": ["Sublimation Heat Press Systems", "Multi-needle Embroidery Machines", "Automated Gerber Cutting", "Juki Industrial Sewing", "Fabric Inspection Machines", "Ultrasonic Welding", "Laser Cutting Systems"],
     "capacity": "1.5M+ pieces annually",
     "leadTime": "2-4 weeks production after sample approval",
     "moq": "50 pieces per style/color"
   },
   "products": [
-    {
-      "id": "football-kits",
-      "name": "Football Kits",
-      "category": "Team Sports",
-      "description": "Custom sublimation-printed football uniforms with moisture-wicking polyester. Full kit options include jersey, shorts, and socks. FIFA-compliant materials available.",
-      "image": "https://placehold.co/600x400/1B4332/FFFFFF?text=Football+Kits",
-      "features": ["Sublimation printed", "Moisture-wicking", "100% polyester", "Custom logos & numbering", "FIFA-compliant options"],
-      "specs": {
-        "material": "100% Polyester, 140-180 GSM",
-        "sizes": "XS - 3XL, Custom sizing available",
-        "colors": "Unlimited via sublimation",
-        "moq": "50 sets"
-      }
-    },
-    {
-      "id": "cricket-wear",
-      "name": "Cricket Apparel",
-      "category": "Team Sports",
-      "description": "Professional cricket uniforms including playing kits, training wear, and team travel gear. UV-protective fabrics with moisture management technology for long-format matches.",
-      "image": "https://placehold.co/600x400/0A1F44/FFFFFF?text=Cricket+Apparel",
-      "features": ["Breathable mesh panels", "UV protection SPF 50+", "Quick dry technology", "Reinforced stitching"],
-      "specs": {
-        "material": "Polyester/Spandex blend, 150 GSM",
-        "sizes": "XS - 3XL",
-        "colors": "Sublimation unlimited",
-        "moq": "100 pieces"
-      }
-    },
-    {
-      "id": "boxing-gear",
-      "name": "Boxing Equipment",
-      "category": "Combat Sports",
-      "description": "Professional boxing shorts, robes, gloves, and protective gear manufactured to international competition standards. Trusted by promoters and gyms worldwide.",
-      "image": "https://placehold.co/600x400/8B0000/FFFFFF?text=Boxing+Equipment",
-      "features": ["Competition grade", "Reinforced padding", "Custom embroidery", "AIBA-approved options", "Durable satin construction"],
-      "specs": {
-        "material": "Satine/Satin, Genuine Leather",
-        "sizes": "XS - 5XL",
-        "colors": "Sublimation + custom",
-        "moq": "50 pieces"
-      }
-    },
-    {
-      "id": "mma-fightwear",
-      "name": "MMA & Fightwear",
-      "category": "Combat Sports",
-      "description": "Mixed martial arts shorts, rashguards, and gi uniforms designed for durability and freedom of movement. Competition-ready with reinforced stress points.",
-      "image": "https://placehold.co/600x400/2C2C2C/FFFFFF?text=MMA+Fightwear",
-      "features": ["4-way stretch fabric", "Anti-slip waistband", "Reinforced seams", "Sublimation ready", "Fight-tested durability"],
-      "specs": {
-        "material": "Polyester/Spandex, 200 GSM",
-        "sizes": "XS - 3XL",
-        "colors": "Unlimited",
-        "moq": "50 pieces"
-      }
-    },
-    {
-      "id": "running-apparel",
-      "name": "Running Apparel",
-      "category": "Athletic Wear",
-      "description": "Performance running shirts, shorts, tights, and jackets with reflective details and ergonomic design. Engineered for marathon, trail, and everyday running.",
-      "image": "https://placehold.co/600x400/1A535C/FFFFFF?text=Running+Apparel",
-      "features": ["Reflective elements", "Ventilation zones", "Flatlock seams", "Lightweight construction", "Ergonomic paneling"],
-      "specs": {
-        "material": "Polyester/Spandex, Nylon/Spandex",
-        "sizes": "XS - 3XL",
-        "colors": "Sublimation + solid dye",
-        "moq": "100 pieces"
-      }
-    },
-    {
-      "id": "gym-fitness",
-      "name": "Gym & Fitness Wear",
-      "category": "Athletic Wear",
-      "description": "Men's and women's training apparel including tank tops, leggings, shorts, and sports bras. Squat-proof, sweat-wicking fabrics for intense workouts.",
-      "image": "https://placehold.co/600x400/0D0D0D/AAFF00?text=Gym+Fitness+Wear",
-      "features": ["Squat-proof opacity", "Sweat-wicking finish", "Compression fit options", "Custom branding", "4-way stretch"],
-      "specs": {
-        "material": "Nylon/Spandex, Polyester/Spandex",
-        "sizes": "XS - 3XL",
-        "colors": "Unlimited",
-        "moq": "50 pieces"
-      }
-    },
-    {
-      "id": "basketball-uniforms",
-      "name": "Basketball Uniforms",
-      "category": "Team Sports",
-      "description": "Full basketball uniform sets with sublimation printing, mesh construction, and team customization. Jersey and short sets with matching accessories.",
-      "image": "https://placehold.co/600x400/0066FF/FFFFFF?text=Basketball+Uniforms",
-      "features": ["Mesh breathable panels", "Full sublimation printing", "Team numbering system", "Moisture management", "Anti-rip construction"],
-      "specs": {
-        "material": "100% Mesh Polyester, 130 GSM",
-        "sizes": "XS - 3XL",
-        "colors": "Unlimited via sublimation",
-        "moq": "50 sets"
-      }
-    },
-    {
-      "id": "martial-arts",
-      "name": "Martial Arts Uniforms",
-      "category": "Combat Sports",
-      "description": "Karate, taekwondo, judo, and kung fu uniforms with reinforced stitching and competition-grade construction. Approved for international tournaments.",
-      "image": "https://placehold.co/600x400/334155/FFFFFF?text=Martial+Arts+Uniforms",
-      "features": ["Competition approved", "Reinforced knees & elbows", "Lightweight fabric", "Custom embroidery", "Multiple weight options"],
-      "specs": {
-        "material": "Cotton/Polyester, Canvas",
-        "sizes": "XS - 5XL, Kids available",
-        "colors": "White, Black, Navy + custom",
-        "moq": "100 pieces"
-      }
-    },
-    {
-      "id": "sports-accessories",
-      "name": "Sports Accessories",
-      "category": "Accessories",
-      "description": "Bags, headbands, wristbands, shin guards, socks, and other sportswear accessories. Custom branding available on all items.",
-      "image": "https://placehold.co/600x400/2C3539/FFD700?text=Sports+Accessories",
-      "features": ["Custom branding", "Bulk pricing", "Multiple materials", "Competitive pricing", "Full customization"],
-      "specs": {
-        "material": "Various (Polyester, Cotton, Neoprene)",
-        "sizes": "One size / Multiple sizing",
-        "colors": "Custom all colors",
-        "moq": "200 pieces"
-      }
-    },
-    {
-      "id": "compression-wear",
-      "name": "Compression Wear",
-      "category": "Athletic Wear",
-      "description": "Performance compression tights, tops, and sleeves with graduated compression zones. Designed for athletic recovery and enhanced performance.",
-      "image": "https://placehold.co/600x400/1C1C1C/E63946?text=Compression+Wear",
-      "features": ["Graduated compression", "Muscle support zones", "Quick dry technology", "Anti-odor treatment", "Medical-grade fabric"],
-      "specs": {
-        "material": "Nylon/Spandex, Polyester/Spandex",
-        "sizes": "XS - 3XL",
-        "colors": "Sublimation + solid",
-        "moq": "100 pieces"
-      }
-    }
+    {"id":"football-kits","name":"Football Kits","category":"Team Sports","description":"Custom sublimation-printed football uniforms with moisture-wicking polyester. Full kit options include jersey, shorts, and socks. FIFA-compliant materials available.","features":["Sublimation printed","Moisture-wicking","100% polyester","Custom logos","FIFA-compliant"],"specs":{"material":"100% Polyester, 140-180 GSM","sizes":"XS - 3XL, Custom","colors":"Unlimited via sublimation","moq":"50 sets"}},
+    {"id":"cricket-wear","name":"Cricket Apparel","category":"Team Sports","description":"Professional cricket uniforms including playing kits, training wear, and team travel gear. UV-protective fabrics with moisture management technology.","features":["Breathable mesh","UV protection SPF 50+","Quick dry","Reinforced stitching"],"specs":{"material":"Polyester/Spandex, 150 GSM","sizes":"XS - 3XL","colors":"Sublimation unlimited","moq":"100 pieces"}},
+    {"id":"boxing-gear","name":"Boxing Equipment","category":"Combat Sports","description":"Professional boxing shorts, robes, gloves, and protective gear manufactured to international competition standards. Trusted by promoters worldwide.","features":["Competition grade","Reinforced padding","Custom embroidery","AIBA-approved"],"specs":{"material":"Satine/Satin, Leather","sizes":"XS - 5XL","colors":"Sublimation + custom","moq":"50 pieces"}},
+    {"id":"mma-fightwear","name":"MMA & Fightwear","category":"Combat Sports","description":"Mixed martial arts shorts, rashguards, and gi uniforms designed for durability and freedom of movement. Competition-ready construction.","features":["4-way stretch","Anti-slip waistband","Reinforced seams","Sublimation ready"],"specs":{"material":"Polyester/Spandex, 200 GSM","sizes":"XS - 3XL","colors":"Unlimited","moq":"50 pieces"}},
+    {"id":"running-apparel","name":"Running Apparel","category":"Athletic Wear","description":"Performance running shirts, shorts, tights, and jackets with reflective details and ergonomic design. Engineered for all running disciplines.","features":["Reflective elements","Ventilation zones","Flatlock seams","Lightweight"],"specs":{"material":"Polyester/Spandex, Nylon","sizes":"XS - 3XL","colors":"Sublimation + solid","moq":"100 pieces"}},
+    {"id":"gym-fitness","name":"Gym & Fitness Wear","category":"Athletic Wear","description":"Men's and women's training apparel including tank tops, leggings, shorts, and sports bras. Squat-proof, sweat-wicking fabrics.","features":["Squat-proof","Sweat-wicking","Compression fit","Custom branding"],"specs":{"material":"Nylon/Spandex, Polyester","sizes":"XS - 3XL","colors":"Unlimited","moq":"50 pieces"}},
+    {"id":"basketball-uniforms","name":"Basketball Uniforms","category":"Team Sports","description":"Full basketball uniform sets with sublimation printing, mesh construction, and team customization. Jersey and short sets.","features":["Mesh breathable","Full sublimation","Team numbering","Anti-rip"],"specs":{"material":"Mesh Polyester, 130 GSM","sizes":"XS - 3XL","colors":"Unlimited","moq":"50 sets"}},
+    {"id":"martial-arts","name":"Martial Arts Uniforms","category":"Combat Sports","description":"Karate, taekwondo, judo, and kung fu uniforms with reinforced stitching and competition-grade construction.","features":["Competition approved","Reinforced knees","Lightweight","Custom embroidery"],"specs":{"material":"Cotton/Polyester, Canvas","sizes":"XS - 5XL, Kids","colors":"White, Black, Navy + custom","moq":"100 pieces"}},
+    {"id":"sports-accessories","name":"Sports Accessories","category":"Accessories","description":"Bags, headbands, wristbands, shin guards, socks, and other sportswear accessories with custom branding available.","features":["Custom branding","Bulk pricing","Multiple materials","Full customization"],"specs":{"material":"Various","sizes":"One size / Multiple","colors":"Custom all colors","moq":"200 pieces"}},
+    {"id":"compression-wear","name":"Compression Wear","category":"Athletic Wear","description":"Performance compression tights, tops, and sleeves with graduated compression zones for athletic recovery and performance.","features":["Graduated compression","Muscle support","Quick dry","Anti-odor"],"specs":{"material":"Nylon/Spandex, Polyester","sizes":"XS - 3XL","colors":"Sublimation + solid","moq":"100 pieces"}}
   ],
   "certifications": [
-    { "name": "ISO 9001:2015", "description": "Quality Management System certified", "icon": "🏆" },
-    { "name": "ISO 14001:2015", "description": "Environmental Management System", "icon": "🌿" },
-    { "name": "OEKO-TEX Standard 100", "description": "Tested for harmful substances", "icon": "✅" },
-    { "name": "BSCI", "description": "Business Social Compliance Initiative", "icon": "🤝" },
-    { "name": "SEDEX/SMETA", "description": "Ethical trade audit compliant", "icon": "📋" },
-    { "name": "CE Marking", "description": "European Conformity for protective gear", "icon": "🇪🇺" },
-    { "name": "FIFA Quality", "description": "Approved football supplier", "icon": "⚽" },
-    { "name": "WRAP", "description": "Worldwide Responsible Accredited Production", "icon": "🌍" }
+    {"name":"ISO 9001:2015","description":"Quality Management System","icon":"🏆"},
+    {"name":"ISO 14001:2015","description":"Environmental Management","icon":"🌿"},
+    {"name":"OEKO-TEX 100","description":"Tested for harmful substances","icon":"✅"},
+    {"name":"BSCI","description":"Social Compliance Initiative","icon":"🤝"},
+    {"name":"SEDEX/SMETA","description":"Ethical trade audit","icon":"📋"},
+    {"name":"CE Marking","description":"European Conformity","icon":"🇪🇺"},
+    {"name":"FIFA Quality","description":"Approved football supplier","icon":"⚽"},
+    {"name":"WRAP","description":"Responsible Production","icon":"🌍"}
   ],
   "exportInfo": {
-    "markets": ["Europe", "North America", "Middle East", "Asia Pacific", "Africa", "South America"],
-    "countries": ["United Kingdom", "Germany", "France", "Italy", "Spain", "United States", "Canada", "UAE", "Saudi Arabia", "Qatar", "Australia", "Japan", "South Korea", "Nigeria", "South Africa", "Brazil"],
-    "shippingTerms": ["FOB Sialkot", "CIF Destination", "EXW Factory", "DDP Door-to-Door"],
-    "paymentTerms": ["T/T (Telegraphic Transfer)", "L/C (Letter of Credit)", "Western Union", "PayPal (sample orders)"],
-    "specialConditions": ["GSP+ 0% import duty into all 27 EU member states", "Pakistan Origin Certificate for preferential tariffs", "Full export documentation prepared in-house", "Door-to-door DDP shipping to USA, UK, EU, Australia, Canada"]
+    "markets":["Europe","North America","Middle East","Asia Pacific","Africa","South America"],
+    "countries":["United Kingdom","Germany","France","Italy","Spain","United States","Canada","UAE","Saudi Arabia","Qatar","Australia","Japan","South Korea","Nigeria","South Africa","Brazil"],
+    "shippingTerms":["FOB Sialkot","CIF Destination","EXW Factory","DDP Door-to-Door"],
+    "paymentTerms":["T/T (Telegraphic Transfer)","L/C (Letter of Credit)","Western Union","PayPal (samples)"],
+    "specialConditions":["GSP+ 0% import duty into EU","Pakistan Origin Certificate","Full export documentation in-house","DDP shipping to USA, UK, EU, Australia, Canada"]
   },
   "stats": [
-    { "value": "18+", "label": "Years of Experience" },
-    { "value": "1.5M+", "label": "Pieces Per Year" },
-    { "value": "35+", "label": "Countries Served" },
-    { "value": "250+", "label": "Skilled Workers" },
-    { "value": "45K", "label": "Sq Ft Factory" },
-    { "value": "98%", "label": "On-time Delivery" }
+    {"value":"18+","label":"Years of Experience"},
+    {"value":"1.5M+","label":"Pieces Per Year"},
+    {"value":"35+","label":"Countries Served"},
+    {"value":"250+","label":"Skilled Workers"},
+    {"value":"45K","label":"Sq Ft Factory"},
+    {"value":"98%","label":"On-time Delivery"}
   ],
   "testimonials": [
-    {
-      "quote": "Outstanding quality and communication. Our custom team kits arrived on time and exceeded expectations. Apex is a reliable long-term partner.",
-      "author": "Marcus Weber",
-      "company": "FC Bayern Replica League",
-      "country": "Germany",
-      "avatar": "https://placehold.co/80x80/1B4332/FFFFFF?text=MW"
-    },
-    {
-      "quote": "We have been sourcing boxing equipment from Apex for 5 years. Consistent quality, competitive pricing, and they understand our market.",
-      "author": "James Mitchell",
-      "company": "FightRight Distribution",
-      "country": "United Kingdom",
-      "avatar": "https://placehold.co/80x80/8B0000/FFFFFF?text=JM"
-    },
-    {
-      "quote": "The sublimation printing quality is world-class. Our fitness brand's custom leggings are bestsellers, thanks to Apex's manufacturing.",
-      "author": "Sarah Al-Hassan",
-      "company": "FitGear UAE",
-      "country": "United Arab Emirates",
-      "avatar": "https://placehold.co/80x80/0D9488/FFFFFF?text=SA"
-    }
+    {"quote":"Outstanding quality and communication. Our custom team kits arrived on time and exceeded expectations. Apex is a reliable long-term partner.","author":"Marcus Weber","company":"FC Bayern Replica League","country":"Germany"},
+    {"quote":"We have been sourcing boxing equipment from Apex for 5 years. Consistent quality, competitive pricing, and they understand our market.","author":"James Mitchell","company":"FightRight Distribution","country":"United Kingdom"},
+    {"quote":"The sublimation printing quality is world-class. Our fitness brand's custom leggings are bestsellers, thanks to Apex's manufacturing.","author":"Sarah Al-Hassan","company":"FitGear UAE","country":"United Arab Emirates"}
   ],
-  "industriesServed": ["Professional Sports Clubs", "Academy & School Teams", "Fitness & Gym Brands", "Martial Arts Schools", "Boxing & MMA Promoters", "Retail Sportswear Brands", "Government Sports Programs", "Corporate Wellness Programs"],
+  "industriesServed":["Professional Sports Clubs","Academy & School Teams","Fitness & Gym Brands","Martial Arts Schools","Boxing & MMA Promoters","Retail Sportswear Brands","Government Sports Programs","Corporate Wellness Programs"],
   "contact": {
-    "address": "Industrial Area, Sialkot, Punjab 51310, Pakistan",
-    "phone": "+92 52 123 4567",
-    "whatsapp": "+92 300 123 4567",
-    "email": "info@apexsportswear.com",
-    "salesEmail": "sales@apexsportswear.com",
-    "website": "www.apexsportswear.com",
-    "social": {
-      "linkedin": "linkedin.com/company/apexsportswear",
-      "facebook": "facebook.com/apexsportswear",
-      "instagram": "instagram.com/apexsportswear",
-      "youtube": "youtube.com/@apexsportswear"
-    }
+    "address":"Industrial Area, Sialkot, Punjab 51310, Pakistan",
+    "phone":"+92 52 123 4567",
+    "whatsapp":"+92 300 123 4567",
+    "email":"info@apexsportswear.com",
+    "salesEmail":"sales@apexsportswear.com",
+    "website":"www.apexsportswear.com",
+    "social":{"linkedin":"linkedin.com/company/apexsportswear","facebook":"facebook.com/apexsportswear","instagram":"instagram.com/apexsportswear","youtube":"youtube.com/@apexsportswear"}
   }
 }
