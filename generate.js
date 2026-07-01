@@ -371,7 +371,7 @@ const c=d.company,cap=d.capabilities,exp=d.exportInfo;
     {icon:'✉️',label:'Email',val:d.contact.email,href:'mailto:'+d.contact.email},
     {icon:'🌐',label:'Website',val:d.contact.website,href:'https://'+d.contact.website},
     {icon:'📍',label:'Address',val:d.contact.address,href:null}
-  ].map(c=>'<div class="flex items-center gap-4 p-4 rounded-lg" style="background:'+accent+'08;border:1px solid '+accent+'15"><span class="text-2xl">'+c.icon+'</span><div><p class="text-xs opacity-50 uppercase tracking-wide mb-0.5">'+c.label+'</p>'+(c.href?'<a href="'+c.href+'" target="_blank" class="text-sm font-semibold hover:underline" style="color:'+accent+'">'+c.val+'</a>':'<p class="text-sm font-semibold">'+c.val+'</p>')+'</div></div>').join('');
+  ].map(c=>'<div class="flex items-center gap-4 p-4 rounded-lg" style="background:'+accent+'08;border:1px solid '+accent+'15"><span class="text-2xl">'+c.icon+'</span><div><p class="text-xs opacity-50 uppercase tracking-wide mb-0.5" style="color:'+heroColor+'">'+c.label+'</p>'+(c.href?'<a href="'+c.href+'" target="_blank" class="text-sm font-semibold hover:underline" style="color:'+accent+'">'+c.val+'</a>':'<p class="text-sm font-semibold" style="color:'+heroColor+'">'+c.val+'</p>')+'</div></div>').join('');
 
   document.querySelector('#f-yr').textContent=c.founded;
   document.querySelector('#f-prods').innerHTML=d.products.slice(0,6).map(p=>'<li><a href="#products" class="hover:opacity-100 transition-opacity">'+p.name+'</a></li>').join('');
