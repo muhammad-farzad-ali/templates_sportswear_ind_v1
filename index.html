@@ -33,19 +33,6 @@ body{font-family:'Inter',sans-serif;background:#0A0A0A;color:#FAFAFA;min-height:
 <input type="text" id="search" placeholder="Search templates..." class="bg-white/5 border border-white/10 rounded-lg px-4 py-2 text-sm text-white/80 placeholder:text-white/30 focus:outline-none focus:border-white/30 w-56">
 <svg class="w-4 h-4 absolute right-3 top-1/2 -translate-y-1/2 text-white/30" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
 </div>
-<select id="category-filter" class="bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-sm text-white/80 focus:outline-none focus:border-white/30">
-<option value="all">All Templates</option>
-<option value="heritage">Heritage (01-05)</option>
-<option value="tech">Tech (06-10)</option>
-<option value="industrial">Industrial (11-15)</option>
-<option value="minimal">Minimal (16-20)</option>
-<option value="performance">Performance (21-25)</option>
-<option value="global">Global (26-30)</option>
-<option value="modern">Modern (31-35)</option>
-<option value="editorial">Editorial (36-40)</option>
-<option value="dark">Dark (41-45)</option>
-<option value="artisan">Artisan (46-50)</option>
-</select>
 <span id="count" class="text-xs text-white/30 font-mono"></span>
 </div>
 </div>
@@ -212,7 +199,6 @@ const loader=document.getElementById('loader');
 const sentinel=document.getElementById('sentinel');
 const countEl=document.getElementById('count');
 const searchEl=document.getElementById('search');
-const catEl=document.getElementById('category-filter');
 
 function createCard(t,i){
   const card=document.createElement('div');
@@ -305,11 +291,9 @@ function reset(){
   loading=false;
   loader.style.display='';
   const q=searchEl.value.toLowerCase();
-  const cat=catEl.value;
   filtered=TEMPLATES.filter(t=>{
     const matchQ=!q||t.name.toLowerCase().includes(q)||t.id.includes(q)||t.fonts.toLowerCase().includes(q)||t.cat.includes(q);
-    const matchCat=cat==='all'||t.cat===cat;
-    return matchQ&&matchCat;
+    return matchQ;
   });
   countEl.textContent=filtered.length+' templates';
   loadBatch();
@@ -324,7 +308,6 @@ window.addEventListener('scroll',()=>{
 },{passive:true});
 
 searchEl.addEventListener('input',reset);
-catEl.addEventListener('change',reset);
 
 reset();
 </script>
