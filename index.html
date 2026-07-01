@@ -11,8 +11,8 @@
 body{font-family:'Inter',sans-serif;background:#0A0A0A;color:#FAFAFA;min-height:200vh}
 .card{opacity:0;transform:translateY(30px);transition:opacity .5s ease,transform .5s ease}
 .card.visible{opacity:1;transform:translateY(0)}
-.preview-wrap{position:relative;width:100%;height:280px;overflow:hidden;border-radius:12px 12px 0 0;background:#111}
-.preview-wrap iframe{width:1280px;height:900px;border:none;transform:scale(0.25);transform-origin:top left;pointer-events:none;position:absolute;top:0;left:0}
+.preview-wrap{position:relative;width:100%;overflow:hidden;border-radius:12px 12px 0 0;background:#111}
+.preview-wrap iframe{border:none;pointer-events:none;position:absolute;top:0;left:0;transform-origin:top left}
 .preview-overlay{position:absolute;inset:0;background:linear-gradient(180deg,transparent 60%,rgba(0,0,0,.6));z-index:1;pointer-events:none}
 .preview-hover{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity .3s ease;z-index:2;background:rgba(0,0,0,.5)}
 .card:hover .preview-hover{opacity:1}
@@ -129,9 +129,10 @@ function createCard(t,i){
   card.className='card';
   card.style.cssText='background:#111;border:1px solid rgba(255,255,255,0.06);border-radius:12px;overflow:hidden';
   const tplUrl='templates/'+t.id+'-'+t.dir+'/index.html';
+  const PREVIEW_H=280;
   card.innerHTML=`
-    <div class="preview-wrap">
-      <iframe data-src="${tplUrl}" loading="lazy" scrolling="no"></iframe>
+    <div class="preview-wrap" style="height:${PREVIEW_H}px">
+      <iframe data-src="${tplUrl}" data-h="${PREVIEW_H}" data-bg="${t.bg}" loading="lazy" scrolling="no"></iframe>
       <div class="preview-overlay"></div>
       <div class="absolute top-3 left-3 z-10 px-2 py-1 rounded text-xs font-mono font-bold" style="background:${t.accent};color:${t.primary}">${t.id}</div>
       <a href="${tplUrl}" target="_blank" class="preview-hover">
@@ -153,6 +154,19 @@ function createCard(t,i){
     </div>`;
   setTimeout(()=>card.classList.add('visible'),40*(i% BATCH));
   return card;
+}
+
+function positionIframe(iframe){
+  const wrap=iframe.parentElement;
+  const wrapW=wrap.offsetWidth;
+  const wrapH=parseInt(iframe.dataset.h)||280;
+  const iframeW=1280;
+  const iframeH=900;
+  const scale=Math.max(wrapW/iframeW, wrapH/iframeH);
+  iframe.style.width=iframeW+'px';
+  iframe.style.height=iframeH+'px';
+  iframe.style.transform='scale('+scale+')';
+  iframe.style.background=iframe.dataset.bg||'#fff';
 }
 
 function loadBatch(){
@@ -178,10 +192,19 @@ function loadIframesInView(){
   iframes.forEach(iframe=>{
     const rect=iframe.getBoundingClientRect();
     if(rect.top<window.innerHeight+500&&rect.bottom>-200){
-      if(!iframe.src){iframe.src=iframe.getAttribute('data-src');}
+      if(!iframe.src){
+        iframe.onload=function(){positionIframe(iframe);};
+        iframe.src=iframe.getAttribute('data-src');
+      }
     }
   });
 }
+
+window.addEventListener('resize',()=>{
+  document.querySelectorAll('iframe[data-src]').forEach(iframe=>{
+    if(iframe.src)positionIframe(iframe);
+  });
+});
 
 function reset(){
   grid.innerHTML='';
